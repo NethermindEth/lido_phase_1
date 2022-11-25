@@ -1,0 +1,685 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Pistis</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="208d8eef-a08c-42a0-b6eb-55b842b1f746" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🤨</span></div><h1 class="page-title">Pistis</h1></header><div class="page-body"><p id="627b124d-2c34-4b8f-a277-d1f380ea4de0" class="">Pistis is a master thesis in Computer Science and Engineering, Politecnico di Milano, in 2019.</p><p id="28cd17ff-0a99-4770-9c84-ca61b41966bd" class="">It provides quite a good literature search. It gave us useful references on both the theoretical and applied sides. </p><p id="be982763-d5d5-470c-aed2-f233ff5b3f3e" class="">But it doesn’t discuss <strong>Sybil-resistancy</strong> and <strong>decentralized credential issuance</strong> which may be seen as the core problems for our projects. </p><p id="6f555433-68f1-4439-9ad7-d53932b35d93" class="">Also, it allows the delegation of an identity, i.e. one can perform an operation on behalf of another identity, which we don’t want it.</p><h1 id="f6fff162-6b75-428f-9cf8-fa0da69eae6f" class="">Introduction</h1><ul id="0830e52c-bae9-4f20-a4c0-473bd514fba0" class="bulleted-list"><li style="list-style-type:disc">This thesis focuses on the existing SSI projects, particularly <strong>uPort, </strong>which is believed to be the most mature one. (it uses the Ethereum network) </li></ul><ul id="cd6f08c0-6758-43e7-876e-c4577be53efb" class="bulleted-list"><li style="list-style-type:disc"><strong>Pistis </strong>is a credential management system based on the Ethereum blockchain.</li></ul><h3 id="1e0d2eb6-96a0-4e54-8fa9-9707f2cf8694" class="">Building blocks</h3><ul id="21e7f95e-25cb-4796-99fe-54e246ba8888" class="bulleted-list"><li style="list-style-type:disc">DIDs and DDOs (DID Documents)</li></ul><ul id="7f16677f-48cc-489e-ad8e-3ae28376b9e5" class="bulleted-list"><li style="list-style-type:disc">VCs</li></ul><ul id="f00d43cd-e2ed-4c9a-90de-c104167d85e3" class="bulleted-list"><li style="list-style-type:disc">Blockchain<ul id="da67343b-cd07-40ae-989d-e5a8f306cad4" class="bulleted-list"><li style="list-style-type:circle">It is used as a global decentralized authority to allow revocations of Verifiable Credentials alongside revocation of public keys associated with a DID.</li></ul></li></ul><ul id="1c15d16e-734f-4571-8ea2-008f1bd72e22" class="bulleted-list"><li style="list-style-type:disc">Smart Contracts<ul id="538a9fd4-345f-4164-a395-b052a3415779" class="bulleted-list"><li style="list-style-type:circle">Operation executor</li></ul><ul id="5f64408c-5d0d-4def-9f96-321294dd043b" class="bulleted-list"><li style="list-style-type:circle">Permission registry</li></ul><ul id="7d5045bc-4612-4dec-8f4f-dd1389e646eb" class="bulleted-list"><li style="list-style-type:circle">Trusted contact management </li></ul><ul id="57265e0e-d5ff-4f3c-a38a-1f1870b85336" class="bulleted-list"><li style="list-style-type:circle">Credential status registry</li></ul><ul id="bb252452-2e6b-4aef-9963-be4131da0ca4" class="bulleted-list"><li style="list-style-type:circle">DID registry</li></ul><ul id="dd3d6650-fe98-4bfa-82e8-f786d01bc4e6" class="bulleted-list"><li style="list-style-type:circle">MultiSig operations</li></ul><ul id="dd09ce98-37ed-4846-b811-3413ee32d0f7" class="bulleted-list"><li style="list-style-type:circle">Revocation </li></ul></li></ul><ul id="74034889-c7a4-4724-8ee5-0eaf59aa2a34" class="bulleted-list"><li style="list-style-type:disc">Actors (All need to have Ethereum key pairs)<ul id="d7b2ad97-de36-4e17-89ab-cad638425301" class="bulleted-list"><li style="list-style-type:circle">User(s)</li></ul><ul id="27db32c5-5813-4f42-9eda-4baf51275a00" class="bulleted-list"><li style="list-style-type:circle">Issuer(s)</li></ul><ul id="ed9f3a12-aea8-4ed0-a3eb-d3bb96bf8c05" class="bulleted-list"><li style="list-style-type:circle">Verifier(s)</li></ul></li></ul><h1 id="7dc3bfcf-5736-4639-9d6e-70516aa4e18c" class="">Architecture</h1><figure id="9fd168a2-6b4f-4146-bf8f-4b71e6a05299" class="image"><a href="Pistis%20208d8eefa08c42a0b6eb55b842b1f746/Untitled.png"><img style="width:748px" src="Pistis%20208d8eefa08c42a0b6eb55b842b1f746/Untitled.png"/></a></figure><p id="365efaca-bf3a-41ab-aeb7-ff8bef5bca66" class="">
+</p><h2 id="154b1b82-c6af-40aa-8336-1307a099a111" class="">DID management</h2><h3 id="26156d3f-3a8d-4e91-b4e8-82f5b1189152" class=""><strong>DID Creation</strong></h3><p id="9a9abbf0-c4b6-48ff-b48f-f549e23a7396" class="">Any user who has a key pair for Ethereum can create a DID to use it in Pistis. Assume that a user has an Ethereum address <strong>0xAB</strong>, then his DID will be of the form <strong>did:pistis:0xAB.</strong></p><h3 id="7114a03b-a6e4-484e-b8c4-33f8f953daac" class=""><strong>DID Read and Verify</strong></h3><p id="2dc2b690-ab47-4817-b4e8-3f1fc9e2850f" class=""><strong>This is achieved through the DID Resolver</strong> which is a software component with an API designed to accept requests for DID lookups and execute the corresponding DID method to retrieve the authoritative DID Document.</p><figure id="012f471e-1d4b-4e99-b317-31761e0240bc" class="image"><a href="Pistis%20208d8eefa08c42a0b6eb55b842b1f746/Untitled%201.png"><img style="width:1004px" src="Pistis%20208d8eefa08c42a0b6eb55b842b1f746/Untitled%201.png"/></a></figure><p id="02f0467d-85ea-4845-b094-1140b9d46d93" class=""><strong>DDO contains a list of addresses that are authorized to sign on behalf of that DID</strong>, thus allowing a verifier to check authenticity by applying the asymmetric keys algorithm and checking whether the signing key is amongst the ones who have authorization permissions.</p><h3 id="bcf6c574-0cd2-427c-8bc6-c8573757f84e" class="">DID update</h3><p id="08719038-5490-4d77-b5aa-7425d597cd22" class=""><strong>It is done by updating the DID Registry Smart Contract</strong> that holds the mapping between DIDs and the relative addresses with their specific permission for that DID.</p><h3 id="f96f2b73-a726-4d7e-b960-747e26d2ae39" class="">DID deactivate</h3><p id="1ec6921f-5584-4183-b9a7-d58a9923e154" class=""><strong>It is achieved by revoking all addresses for a certain DID. </strong>This makes the DID unusable and non-retrievable from that point onward.</p><h1 id="49116c09-ef80-4d4d-af7c-3f49ecfb2eea" class="">Processes</h1><h3 id="164f9d43-d7bf-42dd-82c5-a90f58fe318e" class="">Issue Verifiable Credentials</h3><figure id="5ec2fcca-fbf7-4907-991c-a376cef1ec8f" class="image"><a href="Pistis%20208d8eefa08c42a0b6eb55b842b1f746/Untitled%202.png"><img style="width:624px" src="Pistis%20208d8eefa08c42a0b6eb55b842b1f746/Untitled%202.png"/></a></figure><ul id="819b9277-4d26-46d7-bf74-d3667e9ef0ac" class="bulleted-list"><li style="list-style-type:disc">Upon receiving a credential request, the web app <ul id="2a0d160b-db77-4637-92e7-2cc45f2bac75" class="bulleted-list"><li style="list-style-type:circle">generates the Verifiable Credential, </li></ul><ul id="cf4534b9-4922-4a66-a36e-ea7f48369392" class="bulleted-list"><li style="list-style-type:circle">signs it with its own private key, </li></ul><ul id="dc2c6a3e-64bd-4241-a4a3-e66051725d16" class="bulleted-list"><li style="list-style-type:circle">wraps it into a verifiable presentation, </li></ul><ul id="b12bdd53-7729-4d29-bfa2-c20cf25412f1" class="bulleted-list"><li style="list-style-type:circle">produces a JWT of type “Attestation”, </li></ul><ul id="662f6cb7-d4a9-4fc2-a92b-5a1eb46a9409" class="bulleted-list"><li style="list-style-type:circle">renders it as a QR code.</li></ul></li></ul><ul id="f28d8faa-691a-46b7-ac57-44c05973326d" class="bulleted-list"><li style="list-style-type:disc">The mobile app (user) checks the credential it received. If it is valid, <ul id="14e62b2b-acf9-4de8-8eb1-bfef9cbae612" class="bulleted-list"><li style="list-style-type:circle">The mobile application verifies if the issuer is a trusted one, which means that the issuer’s DID is associated with a contact already stored in the list of trusted contacts of the application. </li></ul><ul id="7cbe5ede-1c56-430a-be54-bf500eef9139" class="bulleted-list"><li style="list-style-type:circle">If not, the application asks the user if he wants to add the new issuer to the trusted contacts list with the information attached in the VC field of the Verifiable Credential.</li></ul><ul id="b594ad3c-8e7f-427e-86ee-e2eb0843ab7f" class="bulleted-list"><li style="list-style-type:circle">Verifiable Credential is stored in the application&#x27;s local storage.</li></ul></li></ul><h3 id="2ce88528-10c2-4ff7-be2b-29f1702e6587" class="">Share Verifiable Credentials</h3><p id="3d3c7e88-5de6-4442-9f87-35782ce0727b" class="">Sharing a VC happens when some service requires the user to be eligible for that service. In order to do so, <strong>the user must prove he matches the service requirements.</strong></p><ul id="15b461c8-58b0-496a-be29-3957127ed5a2" class="bulleted-list"><li style="list-style-type:disc">A QR code is shown on the screen for the user to scan using the mobile application. The QR code carries a JWT which is a share request. </li></ul><ul id="8ce3f04e-ad92-483c-9e2a-4ebfe2203726" class="bulleted-list"><li style="list-style-type:disc">If the user accepts, the requested Verifiable Credentials are packed inside a Verifiable Presentation which is signed by the user and sent to the callback URL inside a JWT. </li></ul><ul id="8b8abaa8-e2fa-467c-89af-f067fd674cfe" class="bulleted-list"><li style="list-style-type:disc">Then, the verifiable presentation needs to be verified,<ul id="9138f8b1-fc86-4cf4-b2fd-50cd639215fe" class="bulleted-list"><li style="list-style-type:circle">first, for the verifiable presentation</li></ul><ul id="f8ba4887-73d1-48ba-8782-4e2853826c3b" class="bulleted-list"><li style="list-style-type:circle">second, for each of the credentials inside the presentation. </li></ul></li></ul><figure id="d4dee19e-3d1b-4329-9a49-8eac03ee5b68" class="image"><a href="Pistis%20208d8eefa08c42a0b6eb55b842b1f746/Untitled%203.png"><img style="width:576px" src="Pistis%20208d8eefa08c42a0b6eb55b842b1f746/Untitled%203.png"/></a></figure><ul id="11984704-4e7e-42c8-9e6c-39eb063167df" class="bulleted-list"><li style="list-style-type:disc">After that, the verifier needs to perform verification about the issuer of the Verifiable Presentation and Credential. These are done using Trusted Contact Management.</li></ul><h3 id="2d9576d9-37f2-4fa1-ace4-a0e01a443dcb" class="">Revoke Verifiable Credentials</h3><p id="166c5645-4a8c-4ccb-8950-35505aa2aa51" class="">
+</p><ul id="7b7b066c-409c-4ee2-a3b2-a9c5e6ca0eac" class="bulleted-list"><li style="list-style-type:disc">A revocation list held by the Credential Status List Smart contract. </li></ul><ul id="9e771ce5-0e6b-477e-9e7b-82195febf35f" class="bulleted-list"><li style="list-style-type:disc">An alternative may be an URL that publicly exposes a revocation list.</li></ul><ul id="49f30adf-4c76-4519-a6a2-2ca0ec04f0e1" class="bulleted-list"><li style="list-style-type:disc">In order to revoke a verifiable credential and verify its status, the W3C standard is applied. It proposes to insert a pointer to a claim revocation list inside the VC itself.</li></ul><ul id="d96a92d1-2081-4441-88e9-ad5c163e291e" class="bulleted-list"><li style="list-style-type:disc">This pointer points to the Credential Status List Smart contract.</li></ul><ul id="c33a2331-ebd3-4cba-ad72-cebb16b32ca8" class="bulleted-list"><li style="list-style-type:disc">A function accepts as parameters the credential issuer, the credential id, the status, and the status reason. It then updates the smart contract storage.</li></ul><h3 id="79d44b91-b9d5-4b01-9f87-2e3f94bb22d8" class="">Entity Resolution (Trusted Contacts)</h3><ul id="85653827-4b42-4431-a472-3dbb8c706cca" class="bulleted-list"><li style="list-style-type:disc">Just the way it happens with mobile phones in which you choose whose number belongs to depending on your knowledge and on who you trust. In the same way, in Pistis, the user has a Trusted Contacts List (TC List) which simply associates an Entity to a DID.</li></ul><h1 id="2baec159-443f-44b2-a842-99b8de2b06ba" class="">An example implementation</h1><h3 id="a3b2e370-1cf5-40fb-95c5-c9cb2d40d323" class=""><strong>Who is involved?</strong></h3><figure id="74eaa495-4dd7-4147-9a5d-2af32347ddff" class="image"><a href="Pistis%20208d8eefa08c42a0b6eb55b842b1f746/Untitled%204.png"><img style="width:909px" src="Pistis%20208d8eefa08c42a0b6eb55b842b1f746/Untitled%204.png"/></a></figure><p id="b15dece6-e7b1-433c-87ff-b89de4e1973f" class="">
+</p><p id="07311a59-b706-4bbc-a5b2-d8dfa3c8405b" class="">
+</p><h3 id="6d2bc004-ce26-4d5f-8193-e54e23b007b4" class="">User onboarding</h3><figure id="1245b98f-1205-449d-b1d7-0585953c31df" class="image"><a href="Pistis%20208d8eefa08c42a0b6eb55b842b1f746/Untitled%205.png"><img style="width:961px" src="Pistis%20208d8eefa08c42a0b6eb55b842b1f746/Untitled%205.png"/></a></figure><p id="dc6f70f2-cc34-4981-b8ec-99a8caf69a4e" class="">
+</p><p id="61889908-23ed-4e49-ae85-0b420b647c91" class="">
+</p><p id="649089c8-5f09-480b-8102-c40fb0c33610" class="">
+</p><h3 id="8b6b6afa-4cf1-435e-9ec2-1b56dd9667cc" class="">Book x-ray scan</h3><figure id="d2fecfe6-0a63-4b01-a578-4fbbe080ca38" class="image"><a href="Pistis%20208d8eefa08c42a0b6eb55b842b1f746/Untitled%206.png"><img style="width:953px" src="Pistis%20208d8eefa08c42a0b6eb55b842b1f746/Untitled%206.png"/></a></figure><p id="015773c3-3dc7-4b09-9c91-d429a3d4c897" class="">
+</p><p id="7de2aa39-98a3-45bb-af46-35d0b4bf5aed" class="">
+</p><p id="f0a8ae45-6e7c-4440-94b7-f265cb7a6b73" class="">
+</p><h3 id="48bdceab-606c-4fa8-8dee-320aa0ff1913" class="">Perform x-ray scan</h3><figure id="2e658cbb-bab6-4179-861d-9b364affce57" class="image"><a href="Pistis%20208d8eefa08c42a0b6eb55b842b1f746/Untitled%207.png"><img style="width:923px" src="Pistis%20208d8eefa08c42a0b6eb55b842b1f746/Untitled%207.png"/></a></figure><p id="cedf8e18-9b0a-429c-9d17-763a2efcef9f" class="">
+</p><p id="8f7b8fb8-77fa-4d4e-b7e7-fe6c58acd573" class="">
+</p><h3 id="298700e6-99f2-43c7-b839-0f74f1dde2a5" class="">Receive scan by e-mail</h3><figure id="520a055e-89b3-4923-8e1c-23d542b6da3d" class="image"><a href="Pistis%20208d8eefa08c42a0b6eb55b842b1f746/Untitled%208.png"><img style="width:949px" src="Pistis%20208d8eefa08c42a0b6eb55b842b1f746/Untitled%208.png"/></a></figure><p id="f09e0d42-15c9-4ae6-92f8-65b128c60fab" class="">
+</p><p id="5debea4b-60d6-4f0a-ada2-c1739c5dc7ec" class="">
+</p><p id="bcc9d685-b9bf-42fb-9bfb-6024ff026769" class="">
+</p><h3 id="cec116e8-1c6c-45c5-b364-afb43ccc9950" class="">Show the scan to the doctor</h3><figure id="2b02985a-140b-43c1-8fc5-8bcfed2f8c9f" class="image"><a href="Pistis%20208d8eefa08c42a0b6eb55b842b1f746/Untitled%209.png"><img style="width:720px" src="Pistis%20208d8eefa08c42a0b6eb55b842b1f746/Untitled%209.png"/></a></figure><p id="114a1fbe-fee7-4909-a6fc-de8f434e7536" class="">
+</p></div></article></body></html>

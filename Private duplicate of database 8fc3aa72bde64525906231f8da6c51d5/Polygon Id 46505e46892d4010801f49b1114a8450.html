@@ -1,0 +1,692 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Polygon Id</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="46505e46-892d-4010-801f-49b1114a8450" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="Polygon%20Id%2046505e46892d4010801f49b1114a8450/Untitled_2.png"/></div><h1 class="page-title">Polygon Id</h1><table class="properties"><tbody><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Abstract</th><td></td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Year</th><td></td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Link to the paper</th><td><a href="https://0xpolygonid.github.io/tutorials/">https://0xpolygonid.github.io/tutorials/</a></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Score Phase 1</th><td><span class="selected-value select-value-color-green">Very relevant</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Classification</th><td><span class="selected-value select-value-color-orange">DI</span><span class="selected-value select-value-color-green">VC</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Labels</th><td><span class="selected-value select-value-color-orange">Management of credentials</span><span class="selected-value select-value-color-brown">Permissionless</span><span class="selected-value select-value-color-purple">Possible tool in larger solution</span><span class="selected-value select-value-color-purple">Smart Contracts instead of oracles</span></td></tr><tr class="property-row property-row-formula"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesFormula"><path d="M5.04688 14.3604H11.2744C11.7324 14.3604 12.0537 14.0801 12.0537 13.6494C12.0537 13.2119 11.7324 12.9248 11.2744 12.9248H5.81934V12.8564L9.30566 8.82324C9.54492 8.57031 9.6748 8.29688 9.6748 8.0166C9.6748 7.73633 9.54492 7.45605 9.29883 7.20996L5.81934 3.2793V3.21094H11.2812C11.7393 3.21094 12.0537 2.92383 12.0537 2.48633C12.0537 2.05566 11.7393 1.77539 11.2812 1.77539H5.05371C4.34277 1.77539 3.95312 2.26758 3.95312 2.81445C3.95312 3.12207 4.07617 3.44336 4.33594 3.69629L8.15039 7.96875V8.05078L4.3291 12.4395C4.06934 12.6924 3.94629 13.0137 3.94629 13.3213C3.94629 13.8682 4.33594 14.3604 5.04688 14.3604Z"></path></svg></span>Score</th><td>no idea</td></tr><tr class="property-row property-row-date"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesDate"><path d="M3.29688 14.4561H12.7031C14.1797 14.4561 14.9453 13.6904 14.9453 12.2344V3.91504C14.9453 2.45215 14.1797 1.69336 12.7031 1.69336H3.29688C1.82031 1.69336 1.05469 2.45215 1.05469 3.91504V12.2344C1.05469 13.6973 1.82031 14.4561 3.29688 14.4561ZM3.27637 13.1162C2.70898 13.1162 2.39453 12.8154 2.39453 12.2207V5.9043C2.39453 5.30273 2.70898 5.00879 3.27637 5.00879H12.71C13.2842 5.00879 13.6055 5.30273 13.6055 5.9043V12.2207C13.6055 12.8154 13.2842 13.1162 12.71 13.1162H3.27637ZM6.68066 7.38086H7.08398C7.33008 7.38086 7.41211 7.30566 7.41211 7.05957V6.66309C7.41211 6.41699 7.33008 6.3418 7.08398 6.3418H6.68066C6.44141 6.3418 6.35938 6.41699 6.35938 6.66309V7.05957C6.35938 7.30566 6.44141 7.38086 6.68066 7.38086ZM8.92285 7.38086H9.31934C9.56543 7.38086 9.64746 7.30566 9.64746 7.05957V6.66309C9.64746 6.41699 9.56543 6.3418 9.31934 6.3418H8.92285C8.67676 6.3418 8.59473 6.41699 8.59473 6.66309V7.05957C8.59473 7.30566 8.67676 7.38086 8.92285 7.38086ZM11.1582 7.38086H11.5547C11.8008 7.38086 11.8828 7.30566 11.8828 7.05957V6.66309C11.8828 6.41699 11.8008 6.3418 11.5547 6.3418H11.1582C10.9121 6.3418 10.8301 6.41699 10.8301 6.66309V7.05957C10.8301 7.30566 10.9121 7.38086 11.1582 7.38086ZM4.44531 9.58203H4.84863C5.09473 9.58203 5.17676 9.50684 5.17676 9.26074V8.86426C5.17676 8.61816 5.09473 8.54297 4.84863 8.54297H4.44531C4.20605 8.54297 4.12402 8.61816 4.12402 8.86426V9.26074C4.12402 9.50684 4.20605 9.58203 4.44531 9.58203ZM6.68066 9.58203H7.08398C7.33008 9.58203 7.41211 9.50684 7.41211 9.26074V8.86426C7.41211 8.61816 7.33008 8.54297 7.08398 8.54297H6.68066C6.44141 8.54297 6.35938 8.61816 6.35938 8.86426V9.26074C6.35938 9.50684 6.44141 9.58203 6.68066 9.58203ZM8.92285 9.58203H9.31934C9.56543 9.58203 9.64746 9.50684 9.64746 9.26074V8.86426C9.64746 8.61816 9.56543 8.54297 9.31934 8.54297H8.92285C8.67676 8.54297 8.59473 8.61816 8.59473 8.86426V9.26074C8.59473 9.50684 8.67676 9.58203 8.92285 9.58203ZM11.1582 9.58203H11.5547C11.8008 9.58203 11.8828 9.50684 11.8828 9.26074V8.86426C11.8828 8.61816 11.8008 8.54297 11.5547 8.54297H11.1582C10.9121 8.54297 10.8301 8.61816 10.8301 8.86426V9.26074C10.8301 9.50684 10.9121 9.58203 11.1582 9.58203ZM4.44531 11.7832H4.84863C5.09473 11.7832 5.17676 11.708 5.17676 11.4619V11.0654C5.17676 10.8193 5.09473 10.7441 4.84863 10.7441H4.44531C4.20605 10.7441 4.12402 10.8193 4.12402 11.0654V11.4619C4.12402 11.708 4.20605 11.7832 4.44531 11.7832ZM6.68066 11.7832H7.08398C7.33008 11.7832 7.41211 11.708 7.41211 11.4619V11.0654C7.41211 10.8193 7.33008 10.7441 7.08398 10.7441H6.68066C6.44141 10.7441 6.35938 10.8193 6.35938 11.0654V11.4619C6.35938 11.708 6.44141 11.7832 6.68066 11.7832ZM8.92285 11.7832H9.31934C9.56543 11.7832 9.64746 11.708 9.64746 11.4619V11.0654C9.64746 10.8193 9.56543 10.7441 9.31934 10.7441H8.92285C8.67676 10.7441 8.59473 10.8193 8.59473 11.0654V11.4619C8.59473 11.708 8.67676 11.7832 8.92285 11.7832Z"></path></svg></span>Date</th><td></td></tr></tbody></table></header><div class="page-body"><p id="a471ced4-f44e-4a87-93e3-7b9662da983e" class="">
+</p><p id="71420231-febe-4e2c-b7ba-afe5ba31dc50" class="">Polygon Id aims to build a service that allows <strong>Issuers</strong> to issue claims about <strong>Users </strong>(including themselves) in a way that <strong>Users</strong> can prove properties (in zero-knowledge) about these claims to.</p><p id="66d540b1-456b-4677-826c-2f9c53425af7" class="">
+</p><p id="5493adeb-63a4-40fb-b166-9eb08796224f" class=""><strong>Disclaimer</strong>: Polygon Id aims to be a framework for projects that need to deal with Id functionalities. It does not aim to be a fully functioning Id ecosystem as other projects we have reviewed (Sismo, Interep, Keybase, etc)</p><p id="17f62d1d-8538-4589-91dd-bcafb5ba9ec5" class="">
+</p><h2 id="9afa1b36-aadb-407b-848c-20c7a8aec75e" class="">Concepts and Methods</h2><h3 id="df6d8ec2-0b40-419c-b30f-a4275e053ddb" class="">Claim</h3><p id="4e0c565f-8c58-488a-b428-98dc6ff4006a" class="">A <strong>claim</strong> is a private tuple of the form</p><figure id="6fde9361-ffd1-46d2-aea6-1f22cc466535" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Claim = (User Id, Schema, Data, Metadata)</mtext></mrow><annotation encoding="application/x-tex">\text{Claim = (User Id, Schema, Data, Metadata)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Claim = (User Id, Schema, Data, Metadata)</span></span></span></span></span></span></div></figure><p id="8601b088-6ad7-42cf-84f8-a3854e4c0d05" class=""><strong>Example:</strong> A university could issue a claim of the form <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>(Student Id, Diploma, [Title of degree, transcript, etc])</mtext></mrow><annotation encoding="application/x-tex">\text{(Student Id, Diploma, [Title of degree, transcript, etc])}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">(Student Id, Diploma, [Title of degree, transcript, etc])</span></span></span></span></span></span><span>﻿</span></span></p><p id="aed162fe-170c-4ede-a137-30a2575478d1" class="">
+</p><p id="8bdf776a-874e-42ed-a5ea-2913d871606f" class="">Claims are supposed to remain private: only the issuer and the User receiving the claim should know its contents. Additionally, the issuer looses all control and trackability of the claim once issued.</p><p id="be8266e6-39dc-49dc-8f2c-9a8077e7e24f" class="">
+</p><h3 id="55879630-a08f-494f-8e48-e2a378446aa5" class="">Identity</h3><p id="390e18cb-152f-456b-bb1d-21306e1f7d7e" class="">Polygon Id is somewhat more abstract than other similar projects presented in this survey.</p><p id="7aa95cbf-f66d-4d0f-9014-58fedd35cc99" class="">It uses the concept of <strong>Identity</strong>. These are either Issuers or Holders. </p><p id="35e3b84c-cb65-48a8-b73c-5be5d06ad9bd" class="">The two types of parties are captured by the same abstract functionality.</p><p id="64a887b1-04c7-4023-8128-59c89210404d" class="">An Identity can make claims about itself or other Identities. </p><p id="3e735873-dc3f-444d-9215-98f421a038ae" class="">Importantly, an Identity has at least one claim involving its private key:</p><figure id="22d49b15-3f95-49ab-898a-84cfaba17018" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Key Claim = (Identity Id, Private key schema, actual private key)</mtext></mrow><annotation encoding="application/x-tex">\text{Key Claim = (Identity Id, Private key schema, actual private key)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Key Claim = (Identity Id, Private key schema, actual private key)</span></span></span></span></span></span></div></figure><p id="4f607e67-f3a6-4b6c-ac5c-3f7003e98a4d" class="">Identities have <strong>Identity states</strong>. These are the hash of a forest of Merkle trees:</p><p id="d8ea33a1-6f7f-49d2-8b58-34e16cef7a1f" class="">
+</p><figure id="2c57fcfb-fba4-42c6-9502-36e04cf68bd4" class="image"><a href="Polygon%20Id%2046505e46892d4010801f49b1114a8450/Untitled.png"><img style="width:624px" src="Polygon%20Id%2046505e46892d4010801f49b1114a8450/Untitled.png"/></a></figure><p id="22a34ce6-e7b7-450d-a7f0-16eed8e1ccc1" class="">The claims MT is the Merkle Tree of all the identity’s claims. This is private. </p><p id="1286976f-f0c5-47c7-b9bb-5ce571660a3c" class="">The Revocation MT allows for revocating claims.</p><p id="8a01bc57-f978-4e46-b058-66e5f4585469" class="">The Roots MT allows proving statements about claims that were valid at some point in the past. </p><p id="1f4782b3-0018-464c-9ded-291e0fc6bc83" class="">The latter two MT’s are public. Polygon Id proposes storing them in an HTTPS address or an IPFS link.</p><p id="45e180ff-3fc0-476f-9ea9-c98513a2241e" class="">(More details follow)</p><p id="5e72cdad-77e7-4c92-a7fc-6d06fb188c89" class="">
+</p><p id="b33f67d2-7a2b-494b-85fe-71a695a63cc3" class="">Id states are posted on the blockchain <span style="border-bottom:0.05em solid">by the Identity</span>, and become associated to a timestamp<span style="border-bottom:0.05em solid">.</span> </p><p id="c6666c2e-3b1b-4cc4-90fa-8ae175a655e4" class="">Every time there is a change in the Id State, the Identity updates its state on the blockchain. (Polygon Id discusses some methods to allow for batching the post of many Id State updates at once. The approach uses relayers.)</p><p id="b32a60f0-f3e6-455a-b432-e31eed301a6b" class="">A smart contract in the blockchain verifies that Id State transitions (i.e., the update of one Id state into a new one) are performed according to some rules. The verification is a Groth16 verification. </p><p id="64c7c698-ff2c-42d6-8d31-86932d6c8a41" class="">Examples of rules:</p><ul id="4fb704a9-8580-4461-b16c-8db257ff7471" class="bulleted-list"><li style="list-style-type:disc">The update is made by the Identity itself, not by an alien party. 
+To prove this in zero-knowledge, <mark class="highlight-blue_background">the Identity would provide the Merkle proof that it knows the private key in its “Key Claim”</mark></li></ul><ul id="5ecc5c30-9eb3-4792-800f-5a7c8a49b325" class="bulleted-list"><li style="list-style-type:disc">The update is made by some delegate party.</li></ul><ul id="f84b54fe-b7f7-4b0d-9250-94622fe0c017" class="bulleted-list"><li style="list-style-type:disc">No Revocation Nonce in the Revocation Merkle Tree has been removed. (Polygon Id does not allow to “unrevoke” a revoked claim). Similarly, no Claim has been downgraded (see later).</li></ul><p id="48b02f13-5d42-4b55-aea5-1b3e0251c9e5" class="">
+</p><p id="d7afcb6f-39b7-4507-ac64-3a0e753afbf7" class="">Next we present the most basic Issuing, Proving, and Verifying methods from Polygon Id. Later we will discuss some extensions.</p><h3 id="738bf9dc-fc0f-4d79-8e73-aa4394af38d6" class="">Issuing claims (credentials)</h3><p id="ea4de620-8950-4c2f-a983-ed648a73b4ac" class=""><strong><mark class="highlight-teal">Id1 (Issuer)</mark></strong> can send a <strong><mark class="highlight-orange">Claim </mark></strong><strong><mark class="highlight-orange"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span></span><span>﻿</span></span></mark></strong> to <strong><mark class="highlight-blue">Id2 (Holder)</mark></strong>, together with the<mark class="highlight-orange"> </mark><strong><mark class="highlight-orange">Merkle Proof that </mark></strong><strong><mark class="highlight-orange"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span></span><span>﻿</span></span></mark></strong><strong><mark class="highlight-orange"> </mark></strong>is<mark class="highlight-orange"> </mark>in the Claims Merkle Tree of <strong><mark class="highlight-teal">Id1</mark></strong>. It additionally signs <strong><mark class="highlight-orange">Claim C</mark></strong> and sends a proof of such signature.</p><p id="2eb5255a-37ba-4a4c-bc9a-751334a3affa" class="">To enable more advanced functionality, <strong><mark class="highlight-teal">Id1</mark></strong> may send some extra data to <strong><mark class="highlight-blue">Id2</mark></strong>.</p><p id="b8713ac1-e7c8-4d93-9e6a-575e4b77dfb4" class="">
+</p><p id="30aa4b65-b7d7-42d9-9ea1-bbe1f1944b11" class="">(Note, in principle, it is not necessary to send a proof of such signature since <strong><mark class="highlight-teal">Id1</mark></strong> is supposed to update its Id State on the blockchain, and to do so it has to prove that it knows its private key, so the <strong><mark class="highlight-blue">Id1</mark></strong> is implicitly signing the claim at that point. However, it could happen that <strong><mark class="highlight-blue">Id1</mark></strong> takes a long time to update the state —in this case <mark class="highlight-teal"><strong>Id2</strong></mark> would still be able to prove statements about its <strong><mark class="highlight-orange">Claim</mark></strong> in a trustworthy manner)</p><p id="b7ee25bd-fd78-41a9-ae7b-dd770346d3fe" class="">
+</p><h3 id="cad84fe1-3e14-45c8-b456-ace31af310f5" class="">Proof and Verification</h3><p id="133adda3-b596-47e6-b167-a00cf0d4f226" class="">Now <strong><mark class="highlight-blue">Id2 (Holder)</mark></strong> can use a zk-SNARK to prove in zero-knowledge that: </p><ul id="5aa56467-19eb-45be-8cc7-f8a648c9ce1f" class="bulleted-list"><li style="list-style-type:disc">It owns<strong><mark class="highlight-orange"> Claim </mark></strong><strong><mark class="highlight-orange"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span></span><span>﻿</span></span></mark></strong><strong><mark class="highlight-orange">.</mark></strong><mark class="highlight-orange"> </mark>To do so, it proves in zero-knowledge that it knows a Merkle Proof for <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span></span><span>﻿</span></span>, and also that<strong> </strong><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span></span><span>﻿</span></span> was signed by the issuer.</li></ul><ul id="47ef4a75-b5a0-44c1-b929-1f65af2b5bd1" class="bulleted-list"><li style="list-style-type:disc">The values in <mark class="highlight-orange"><strong>Claim </strong></mark><mark class="highlight-orange"><strong><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span></span><span>﻿</span></span></strong></mark> satisfy some properties (e.g. the Student passed at least one course with a high degree)</li></ul><ul id="4286e719-5a1e-4913-8bb8-caf75aca358e" class="bulleted-list"><li style="list-style-type:disc">The key in the Key Claim in <strong><mark class="highlight-blue">Id2</mark></strong><mark class="highlight-blue"> </mark>is associated with the Identity Id that<mark class="highlight-blue"> </mark><mark class="highlight-orange"><strong>Claim C</strong></mark><mark class="highlight-blue"> </mark>refers to (i.e.<mark class="highlight-blue"> </mark><strong><mark class="highlight-blue">Id2</mark></strong><mark class="highlight-blue"> </mark>authenticates itself)</li></ul><p id="ddac26f7-0992-4466-95d7-a4a47c690931" class="">without revealing any sensitive information.</p><p id="9557ebce-6d62-41ad-af13-b87556677434" class="">The Verifier checks the validity of the such proof.</p><p id="a81fe594-ebb8-46be-b4ea-4636d72acb44" class="">
+</p><h3 id="700f0f13-9e4d-4527-8e58-f880bc8e2671" class="">Extra features</h3><p id="5b61cd7c-53a1-45ce-854b-9e2dca24d714" class="">The Revocation Tree and the Roots Tree provide some convenient functionality:</p><p id="b3ca4c04-890e-4bf3-90a9-c79c7ca33a6e" class="">
+</p><p id="692b888f-bd62-48ed-9243-7a6abbb918cb" class=""><strong>Revocation of claims</strong></p><p id="2539b15b-497f-4980-af60-83bff7698439" class="">Each claim contains a metadata piece of info, a “Revocation Nonce”. </p><p id="bc979cc5-a886-4ae8-9ae2-ddb07d2c2b0e" class="">When a Holder creates a proof of a statement about a Claim, it also proves that the Revocation Nonce is not in the Revocation Merkle Tree (Recall that the Revocation Tree is public), and sends such proof to the Verifier.</p><p id="3aa5f731-c829-4af7-a903-90a502e0694f" class="">A question: how can the latter be done efficiently? Some kind of “negative” lookup? </p><p id="9b1d9d86-d099-47b5-ae3e-de1a79ef7bec" class="">
+</p><p id="35aa6b81-fedf-4399-9bec-7c833edd38ec" class=""><strong>Temporal proofs</strong></p><p id="0ee3756e-ddd2-4ad5-85d2-57f2b41e6c4f" class="">The leaves in the Roots Merkle Tree consist of all the roots of the Claims, Revocation, and Root Merkle Trees of the Identity. </p><p id="36620269-6b94-4caa-97e0-92fe9ebeadcc" class="">This allows Holders to prove statements about Claims which were true in some past timestamp. </p><p id="18b40744-edff-4030-a907-8db99430c185" class="">For example, Bob can prove that he got his diploma before a certain timestamp.</p><p id="234521cb-d141-4dc9-93cb-7b33dc79a57a" class="">The procedure is as before, but now one uses the appropriate Merkle roots stored in the Roots Merkle Trees, which is a public tree, instead of the most current Id state of the Issuer Id1.  </p><p id="053935c2-7ef6-4dc7-a0cd-2060c0f05888" class="">(For the Merkle proof, Id2 uses a subpath of the whole Merkle Proof it owns. This subpath ends in the root of the Claims MT at the appropriate time).</p><p id="dd974e3b-3b62-4ce8-b82f-88471c6c754f" class="">
+</p><p id="eec8ded4-0045-49bb-a422-34ee68afeee0" class=""><strong>Upgradable claims. </strong>Claims can be modified. To enable this, claims have a version number in their metadata and a reference to its previous version. To modify a claim, a new claim is added to the Claims MT, with appropriate metadata. All previous versions of the Claim have to be revoked; hence, the Revocation Tree is updated accordingly.</p><p id="6f4392b5-3ded-4848-a38f-2586f62d188f" class="">
+</p><p id="b614d959-edba-45ca-9148-a61788d1ee3e" class="">
+</p><h2 id="922559d2-c281-4c80-a7c1-27664bc5e4ed" class="">High-level discussion</h2><h3 id="2bb4e1b2-aa0f-4aee-a0d6-83424141abf5" class=""><strong>The good</strong></h3><ul id="4e27b2d4-ffe1-4e81-8c2e-f71163a2bdee" class="bulleted-list"><li style="list-style-type:disc">Polygon Id is permissionless and decentralized. In particular, <mark class="highlight-blue_background">it does not rely on oracles</mark></li></ul><ul id="94895f07-e5c8-472e-8b53-818fe2480cee" class="bulleted-list"><li style="list-style-type:disc">Verification can be made on-chain or off-chain: <mark class="highlight-blue_background">the Verifier can be a smart contract.</mark></li></ul><ul id="5932dec4-af9d-40d0-837c-627125da4171" class="bulleted-list"><li style="list-style-type:disc">Claims are revocable, upgradable, non-trackable, can be claims about past properties, and can be made to expire.</li></ul><p id="be83c2b9-3ca2-4c99-87c6-dc99f1db7723" class=""> </p><h3 id="bdd7fdbb-6870-44dc-b72a-16b3fb44b7ca" class=""><strong>The tricky</strong></h3><blockquote id="79e42560-581f-4886-9337-0cb5d1a79ff8" class="">Polygon Id needs no trust except in the legitimacy of the Issuing Identities, and the way they make sure that their Claims adjust to reality.</blockquote><p id="76737e2b-483d-4c2f-89a1-9f4fea23d28a" class="">For example, I can create an Identity to represent “University A” and start issuing diplomas to random Ethereum addresses (in this case, the Holder’s Id would be their Ethereum address). </p><p id="ab973b68-1ba3-427d-8bb3-e1c5dc3cf328" class="">Note, however, that the credibility of “University A” would be damaged.</p><p id="44557b9b-9ece-4fd3-b7e3-48019bef7a9a" class="">Notice that <mark class="highlight-blue_background">once we trust an Issuing identity with the above, we don’t need to trust it further</mark>. This is because Identities can only update their state according to some rules (state updates are made on-chain and verified by a Smart Contract).</p><p id="b1948aad-a165-4867-906c-13513768cc20" class="">Hence, besides the point raised above, Polygon Id exhibits very nice properties in the context of Lido.</p><p id="7b7d37cc-6e11-42e0-ab86-c8ea24dc5eb4" class="">Note that <mark class="highlight-blue_background">Polygon Id is not aiming to solve the point above, rather, they expect either:</mark></p><ul id="48b9793b-cb5c-4a54-82a6-1df9b7c9cffd" class="bulleted-list"><li style="list-style-type:disc">a third party to build on top of Polygon Id, addressing such types of issues</li></ul><ul id="076ffd9b-6b6f-4a93-a64b-442fe4e31544" class="bulleted-list"><li style="list-style-type:disc">trusted Issuers to start using Polygon Id. E.g. a government could create its Identity on Polygon Id, and we would all know it is legit since the government would be signing with its keys (assuming we trust that the alleged public key of the government indeed corresponds to a pk controlled by the government)</li></ul><p id="20edcc9c-48f4-44a8-8354-dcd2b458cbb3" class="">
+</p><h3 id="340038b1-8e4b-4cd9-9b9e-73a98a5106d3" class=""><strong>The bad</strong></h3><p id="3fde5d47-5083-4077-800d-1d1b7668406d" class="">It is relatively cheap for an Identity to share claims with another Identity, as long as it is willing to reveal its private key.</p><p id="1bcf3469-674e-44d5-932a-8401e2e6ce65" class="">To mitigate this, one must ensure that the Identity’s private keys are linked to some valuable account or secret.</p><p id="481d8b58-6561-43ec-82c4-ad5ca07274bc" class="">
+</p><p id="014661ed-43c7-41ff-8622-83dad83cf487" class="">
+</p><hr id="13979e51-7a00-4238-b8d6-c88a0b0421ed"/><p id="2af0bae1-ce7f-4b56-9e60-3aa17744a214" class="">
+</p><p id="b251e7af-4c30-4369-a198-c7b04cfa131c" class="">
+</p><h1 id="f61202b4-ffe0-44a2-8f39-169ad5f88741" class="">Isaac’s write-up</h1><figure id="b77f2f5a-5870-43fc-af03-d73f7b68575e" class="link-to-page"><a href="Polygon%20Id%2046505e46892d4010801f49b1114a8450/Isaac%E2%80%99s%20write-up%20b77f2f5a587043fcaf03d73f7b68575e.html">Isaac’s write-up</a></figure><p id="ac81d6b5-3085-4a8e-8fcb-2cd7014f6713" class="">
+</p></div></article></body></html>
