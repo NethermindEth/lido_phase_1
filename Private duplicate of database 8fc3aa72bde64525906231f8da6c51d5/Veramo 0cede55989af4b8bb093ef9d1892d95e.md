@@ -1,0 +1,100 @@
+# Veramo
+
+Abstract: Veramo is a JavaScript framework that makes it easy for anyone to use cryptographically verifiable data in their applications. It was designed to make it easy for developers who want to use DIDs, verifiable credentials, and data-centric protocols to bring next-generation features to their users.
+Classification: DI, VC
+Labels: Implementations, Possible tool in larger solution, Standardization efforts
+Link to the paper: https://veramo.io/
+Score: no idea
+Score Phase 1: Not relevant
+
+# Introduction
+
+This project does not propose any method for the claim-issue-verify (and revoke) cycle which is a common functionality in SSI and credential management systems. It is just an implementation tool that is based on W3C specs.
+
+Veramo is a JavaScript framework for helping developers to create their systems using DIDs, verifiable credentials, verifiable presentations, etc. It is in public beta and it is stated that in the coming months they will announce some breaking changes. 
+
+It works in close coordination with W3C and DIF to provide developers with useful functionalities for constructing their applications. 
+
+Veramo comes out from the uPort project which is a Self-Sovereign Identity (SSI) project by ConsenSys.  
+
+Actually, it is a library that combines many plugins which are also other libraries. 
+
+### Veramo data flow diagram
+
+![Source: [https://www.youtube.com/watch?v=QgbbWYSUhJc](https://www.youtube.com/watch?v=QgbbWYSUhJc)](Veramo%200cede55989af4b8bb093ef9d1892d95e/Untitled.png)
+
+Source: [https://www.youtube.com/watch?v=QgbbWYSUhJc](https://www.youtube.com/watch?v=QgbbWYSUhJc)
+
+# Veramo Agent
+
+Veramo DID agent is the entry point to the Veramo framework. It is the main class and it manages all plugins and event system. It is responsible for 
+
+- Creating DID
+- Resolving DID
+- Credential Issuance
+- Credential Revocation
+- Credential Exchange
+- etc.
+    
+    ![Source: [https://veramo.io/docs/veramo_agent/introduction](https://veramo.io/docs/veramo_agent/introduction)](Veramo%200cede55989af4b8bb093ef9d1892d95e/Untitled%201.png)
+    
+    Source: [https://veramo.io/docs/veramo_agent/introduction](https://veramo.io/docs/veramo_agent/introduction)
+    
+
+### Local agent config
+
+![Source: [https://www.youtube.com/watch?v=QgbbWYSUhJc](https://www.youtube.com/watch?v=QgbbWYSUhJc)](Veramo%200cede55989af4b8bb093ef9d1892d95e/Untitled%202.png)
+
+Source: [https://www.youtube.com/watch?v=QgbbWYSUhJc](https://www.youtube.com/watch?v=QgbbWYSUhJc)
+
+### Fully and partially remote agents
+
+![Source: [https://www.youtube.com/watch?v=QgbbWYSUhJc](https://www.youtube.com/watch?v=QgbbWYSUhJc)](Veramo%200cede55989af4b8bb093ef9d1892d95e/Untitled%203.png)
+
+Source: [https://www.youtube.com/watch?v=QgbbWYSUhJc](https://www.youtube.com/watch?v=QgbbWYSUhJc)
+
+![Source: [https://www.youtube.com/watch?v=QgbbWYSUhJc](https://www.youtube.com/watch?v=QgbbWYSUhJc)](Veramo%200cede55989af4b8bb093ef9d1892d95e/Untitled%204.png)
+
+Source: [https://www.youtube.com/watch?v=QgbbWYSUhJc](https://www.youtube.com/watch?v=QgbbWYSUhJc)
+
+# Plugins
+
+All functionalities that Veramo provides are achieved through the plugins. Developers can use the plugins that they want or they can create custom ones to construct their applications on Veramo.
+
+### The list of core plugins
+
+For the list of core plugins, one can see it [here](https://veramo.io/docs/veramo_agent/plugins).
+
+# **DID Methods**
+
+Veramo uses the DID structure as described in the W3C recommendations. A DID method implements the W3C specifications regarding the creation, resolution, update, and revocation of DIDs and DID documents.  
+
+![Source: [https://veramo.io/docs/veramo_agent/did_methods](https://veramo.io/docs/veramo_agent/did_methods)](Veramo%200cede55989af4b8bb093ef9d1892d95e/Untitled%205.png)
+
+Source: [https://veramo.io/docs/veramo_agent/did_methods](https://veramo.io/docs/veramo_agent/did_methods)
+
+There exist **three core DID methods** which are supported by the core plugins of Veramo. It is also possible for a developer to create a plugin (by forking the existing repository) implementing a custom DID method. 
+
+1. **`did:ethr`**  
+    
+    The Ethr-DID method translates a pair of Ethereum keys into a DID, e.g., did:ethr:0xa34f434223148babcaca68565c503a148bab5fgt. This DID method relies on **ethr-did-registry** Ethereum smart contract (created by [uPort](https://github.com/uport-project/ethr-did-registry)) which is responsible for public key resolution for authentication. It is stated that the Ethr-did method is more scalable and privacy-preserving than the smart contract based identity methods, because it uses the Ethereum key pairs as identity.
+    
+2. **`did:web`**   
+    
+    This method uses the Domain Name System which is a naming system used to identify computers reachable through the Internet or other Internet Protocol (IP) networks (E.g. www.example.com). A web-DID basically translates the domain name into a DID, e.g. did:web:example.com. Here the DID documents are hosted under a well-known URL of a web domain, e.g., www.example.com/well-known/did.json. So, in this method, we don’t need a blockchain. Additionally, more than one DIDs may be stored under the same URL. (For example, the users of a website) 
+    
+3. **`did:key`**   
+    
+    A key-DID is created by generating a pair of keys using Curve25519, e.g. did:key:s8TFH3jsh334iqwdww444LKKLz6MkpTHR8VNsBxYAAWHut. This allows its holder to use EdDSA and ECDH. This method also does not require a blockchain.
+    
+
+# Relevancy assessment
+
+Veramo is not relevant for the first phase (SoK) of the Lido project as it is simply an implementation of concepts such as DID, VC, and VP, following the W3C specifications. 
+
+However, it may be useful for the next phases of the Lido project, especially in the implementation stage. 
+
+# References
+
+- [https://veramo.io/](https://veramo.io/)
+- [https://www.youtube.com/watch?v=QgbbWYSUhJc](https://www.youtube.com/watch?v=QgbbWYSUhJc)

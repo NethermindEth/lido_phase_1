@@ -47,9 +47,9 @@ def main():
     """
 
     # Fetch the database into pandas, and sort the columns as intended
-    columns = ["Title", "Date of publication", "BS factor", "Score Phase 1", "Classification", "Link to the paper", "Abstract"]
-    df = pd.read_csv('scripts/database.csv', usecols=columns)[columns].set_index("Title")
-
+    columns = ["Title", "Year", "Score", "Score Phase 1", "Classification", "Link to the paper", "Abstract"]
+    df = pd.read_csv('scripts/database.csv', usecols=columns, dtype={"Score" : "Int32"})[columns].set_index("Title")
+    
     # Add the hyperlinks to the "Link to Page" column.
     df["Link to the paper"] = df["Link to the paper"].apply(lambda link:construct_html_hyperlink(link,"Link", NewTab=True))
 
@@ -61,7 +61,6 @@ def main():
     df = df.reset_index()
     
     # Take "Path to file" column and turn it into a proper hyperlink (to the markdown files) on the article title.
-    # df["Path to file"] = df["Path to file"].apply(lambda string : string[:-4] + "md") # This line not needed?
     df["Title"] = df["Path to file"].combine(df["Title"], construct_html_hyperlink)
     df = df.drop(columns = "Path to file")
      
