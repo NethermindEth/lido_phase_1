@@ -51,7 +51,7 @@ def main():
     df = pd.read_csv('scripts/database.csv', usecols=columns)[columns].set_index("Title")
 
     # Add the hyperlinks to the "Link to Page" column.
-    df["Link to the paper"] = df["Link to the paper"].apply(lambda link:construct_html_hyperlink(link,link, NewTab=True))
+    df["Link to the paper"] = df["Link to the paper"].apply(lambda link:construct_html_hyperlink(link,"Link", NewTab=True))
 
     # Add the hyperlinks to the "Title" column by merging with the dataframe from pull_paper_hyperlinks
     file_link_df = pull_file_hyperlinks("scripts/html.html")
