@@ -1,5 +1,4 @@
 import re
-import csvtotable
 import pandas as pd
 
 # Auxiliary functions:
@@ -41,7 +40,7 @@ def pull_file_hyperlinks(path_to_html_file):
 ##########
 
 def main():
-    """!Takes the csv file exported from Notion as input and adds hyperlinks to the relevant columns
+    """!Takes the csv file exported from Notion as input and adds hyperlinks to the relevant columns. Then, exports as an HTML table.
 
     Requires the csv file to be called "database.csv" and be located in the main folder.
     """
@@ -51,7 +50,7 @@ def main():
     df = pd.read_csv('scripts/database.csv', usecols=columns)[columns].set_index("Title")
 
     # Add the hyperlinks to the "Link to Page" column.
-    df["Link to the paper"] = df["Link to the paper"].apply(lambda link:construct_html_hyperlink(link,link, NewTab=True))
+    df["Link to the paper"] = df["Link to the paper"].apply(lambda link:construct_html_hyperlink(link,"Link", NewTab=True))
 
     # Add the hyperlinks to the "Title" column by merging with the dataframe from pull_paper_hyperlinks
     file_link_df = pull_file_hyperlinks("scripts/html.html")
@@ -65,7 +64,7 @@ def main():
     df["Title"] = df["Path to file"].combine(df["Title"], construct_html_hyperlink)
     df = df.drop(columns = "Path to file")
      
-    # Save changes:
-    df.to_csv('scripts/database_out.csv', index=False)    
+    # Save changes as html:
+    df.to_html('database_unstyled.html', index=False, escape=False, na_rep="", justify = "center", table_id="database", bold_rows=True)    
 
 main()
