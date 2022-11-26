@@ -232,11 +232,20 @@ c+"</h1><div>"+("function"===typeof e.message?e.message(b,h,e):e.message)+"</div
 		});
 	</script>
 	<style>
+		:root {
+			--main-bg-color: #039;
+			--main-font-color: #37352f;
+			--secondary-font-color: rgba(10, 10, 10, 0.65);
+		}
+
 		body,
 		html {
 			margin: 0;
-			font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+			font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+			line-height: 1.5;
+			font-size: 20px;
 		}
+
 		table.dataTable {
 			width: 100%;
 			margin: 0 auto;
@@ -254,6 +263,14 @@ c+"</h1><div>"+("function"===typeof e.message?e.message(b,h,e):e.message)+"</div
 		table.dataTable thead td {
 			padding: 10px 18px;
 			border-bottom: 1px solid #111;
+		}
+
+		table.dataTable thead th {
+			white-space: nowrap;
+		}
+
+		table.dataTable thead td {
+			font-weight: 500;
 		}
 
 		table.dataTable thead th:active,
@@ -294,7 +311,7 @@ c+"</h1><div>"+("function"===typeof e.message?e.message(b,h,e):e.message)+"</div
 		#table_wrapper .dataTables_filter label,
 		#table_wrapper .dataTables_paginate a,
 		#table_wrapper .dataTables_info {
-			color: #039 !important;
+			color: var(--main-font-color) !important;
 		}
 
 		#table_wrapper .dataTables_filter input {
@@ -325,11 +342,16 @@ c+"</h1><div>"+("function"===typeof e.message?e.message(b,h,e):e.message)+"</div
 
 		#table_wrapper .dataTables_paginate a.current {
 			color: #fff !important;
-			background: #039;
+			background: var(--main-font-color);
+		}
+
+		#table_wrapper .dataTable a{
+			color: var(--main-font-color) !important;
 		}
 
 		#table_wrapper table {
-			font-size: 12px;
+			font-size: 14px;
+			font-weight: 500;
 			background: #fff;
 			border-collapse: collapse;
 			text-align: left;
@@ -337,8 +359,9 @@ c+"</h1><div>"+("function"===typeof e.message?e.message(b,h,e):e.message)+"</div
 		}
 
 		#table_wrapper table caption {
-			font-size: 20px;
-			color: #039;
+			font-size: 32px;
+			font-weight: 700;
+			color: var(--main-font-color);
 			text-align: left;
 			margin-bottom: 10px;
 		}
@@ -346,8 +369,8 @@ c+"</h1><div>"+("function"===typeof e.message?e.message(b,h,e):e.message)+"</div
 		#table_wrapper table th {
 			font-size: 14px;
 			font-weight: normal;
-			color: #039;
-			padding: 10px 8px;
+			color: var(--main-font-color);
+			padding: 8px 20px 8px 4px;
 			border-bottom: 2px solid #6678b1;
 			position: relative;
 		}
@@ -376,24 +399,26 @@ c+"</h1><div>"+("function"===typeof e.message?e.message(b,h,e):e.message)+"</div
 
 		#table_wrapper .dataTables_scrollHead th.sorting:before,
 		#table_wrapper .dataTables_scrollHead th.sorting_asc:before {
-			border-bottom-color: #669;
+			border-bottom-color: var(--secondary-font-color);
 			margin-top: -9px;
 		}
 
 		#table_wrapper .dataTables_scrollHead th.sorting:after,
 		#table_wrapper .dataTables_scrollHead th.sorting_desc:after {
-			border-top-color: #669;
+			border-top-color: var(--secondary-font-color);
 			margin-top: 1px;
 		}
 
 		#table_wrapper table td {
 			border-bottom: 1px solid #ccc;
-			color: #669;
+			color: var(--secondary-font-color);
 			padding: 6px 8px;
+			-webkit-transition: all 180ms ease-in-out;
+			transition: color 180ms ease-in-out;
 		}
 
 		#table_wrapper table tbody tr:hover td {
-			color: #009;
+			color: var(--main-font-color);
 		}
 
 		.dt-buttons {
@@ -402,7 +427,7 @@ c+"</h1><div>"+("function"===typeof e.message?e.message(b,h,e):e.message)+"</div
 
 		.dt-button {
 			color: #FFFFFF;
-			background: #039;
+			background: var(--main-bg-color);
 			margin-right: 10px;
 			padding: 6px 12px;
 			cursor: pointer;
@@ -421,7 +446,7 @@ c+"</h1><div>"+("function"===typeof e.message?e.message(b,h,e):e.message)+"</div
 
 		.dt-button-info {
 			padding: 50px;
-			color: #039;
+			color: var(--main-bg-color);
 			text-align: center;
 			position: fixed;
 			top: 0;
