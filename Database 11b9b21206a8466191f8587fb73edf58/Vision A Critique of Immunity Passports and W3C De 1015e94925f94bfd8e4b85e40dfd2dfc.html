@@ -1,0 +1,671 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Vision: A Critique of Immunity Passports and W3C Decentralized Identifiers</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1015e949-25f9-4bfd-8e4b-85e40dfd2dfc" class="page sans"><header><h1 class="page-title"><strong><strong>Vision: A Critique of Immunity Passports and W3C Decentralized Identifiers</strong></strong></h1><table class="properties"><tbody><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Abstract</th><td>Due to the widespread COVID-19 pandemic, there has been a push for immunity passports&#x27; and even technical proposals. Although the debate about the medical and ethical problems of immunity passports has been widespread, there has been less inspection of the technical foundations of immunity passport schemes. These schemes are envisaged to be used for sharing COVID-19 test and vaccination results in general. The most prominent immunity passport schemes have involved a stack of little-known standards, such as Decentralized Identifiers (DIDs) and Verifiable Credentials (VCs) from the World Wide Web Consortium (W3C). Our analysis shows that this group of technical identity standards are based on under-specified and often non-standardized documents that have substantial security and privacy issues, due in part to the questionable use of blockchain technology. One concrete proposal for immunity passports is even susceptible to dictionary attacks. The use of cryptography theater&#x27; in efforts like immunity passports, where cryptography is used to allay the privacy concerns of users, should be discouraged in standardization. Deployment of these W3C standards for `self-sovereign identity&#x27; in use-cases like immunity passports could just as well lead to a dangerous form identity totalitarianism.</td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Year</th><td>2020</td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Link to the paper</th><td><a href="https://arxiv.org/abs/2012.00136">https://arxiv.org/abs/2012.00136</a></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Relevance score</th><td><span class="selected-value select-value-color-yellow">Relevant</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Quality score</th><td><span class="selected-value select-value-color-blue">5</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Labels</th><td><span class="selected-value select-value-color-red">Critique</span><span class="selected-value select-value-color-default">Implementations</span><span class="selected-value select-value-color-brown">Standardization efforts</span></td></tr></tbody></table></header><div class="page-body"><h1 id="6ce465b4-50eb-4309-83d3-099e417700da" class="">TL;DR</h1><p id="9ce7d65c-9113-4a2d-833d-7463f9d9e79b" class="">The main goal of this note is to explore the possible weaknesses of DIDs and VCs. We aim to import useful takeaways from these critiques on the W3C standards for Lido project. </p><p id="8fb7350e-8b8e-466b-ad65-94c17891c49d" class="">This paper criticizes three main points. The first critique is that the data structure and serialization method of the VC standard of W3C <strong>is NOT injective</strong>. Due to the fact that the underlying serialization method is not injective, an active adversary may deploy a <em>signature exclusion</em> or a <em>signature replacement</em> attack on VCs and DIDs. It is stated that there is a mitigation for this problem, i.e. using <strong>JSON Web Token (JWT)</strong>. </p><p id="e1dac0d4-c324-44a1-bba6-2eb55dd99bab" class="">The second point is that storing DIDs or DID documents on public blockchains may lead to vulnerabilities against correlation attacks. </p><p id="4035d4eb-62d5-43a5-916d-bc96d69186a3" class="">The third one is that standardization efforts on the notions like VCs and DIDs should be reviewed by security and privacy experts before they are used in real-world implementations. </p><p id="744d3f2d-64f1-475c-99c4-048c50037b58" class="">
+</p><nav id="7dfecf5e-f55e-4528-a188-f3d8cae5b9d8" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6ce465b4-50eb-4309-83d3-099e417700da">TL;DR</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#641155ae-b54e-49d0-b63b-caf95acd278e">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5ac48786-4e60-4599-9cc7-feba444931dd">Critique on W3C Verifiable Credentials</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#682c24b5-5875-45ae-908c-c45b4f7454a2">Critique on W3C Decentralized Identifiers</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#41ec70ae-cbe0-41c8-a5a8-c94be931deb9">The Abuse of Security Standardization</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ab4f881c-2336-403b-abe1-ee3c9366177a">Conclusion</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b3f671e9-a773-46b0-8e2b-75e3fc18d26c">References</a></div></nav><h1 id="641155ae-b54e-49d0-b63b-caf95acd278e" class="">Introduction</h1><p id="1354fdc0-8599-4297-903e-e891882fa06a" class="">Because of the COVID-19 pandemic, a notion called “immunity passports” has currently been discussed by the governments. Harry Halpin (<em>from K.U. Leuven</em>) examines and criticizes the structure of existing proposals on <strong>Immunity Passports </strong>which involve using Decentralized Identifiers (DIDs) and Verifiable Credentials (VCs) <strong>from the World Wide Web Consortium (W3C)</strong>. </p><p id="0f9365c9-6ebe-4f9f-83e6-9b111a8007b4" class=""><strong>Immunity Passports. </strong>An immunity passport is <strong>a digital credential</strong> that includes some information about an individual’s disease and immunity history.</p><h1 id="5ac48786-4e60-4599-9cc7-feba444931dd" class="">Critique on W3C Verifiable Credentials</h1><p id="7b6cad8b-721a-472c-8b82-1ab9c9860c77" class="">It is stated that all current immunity credential schemes are constructed according to <strong>the W3C Verified Credential Data Model 1.0 standard</strong>. </p><p id="f585fc7e-df91-44da-896f-d9f962b80ba4" class="">The paper&#x27;s main critique of VCs is the insecurity of the serialization method of the W3C standards. It recommends (at the time of writing) using JSON or Semantic Web serialization (JSON or JSON-LD). </p><p id="acc1b611-222a-4d41-acf4-8676e5a5fd64" class="">Two main problems with the Semantic Web:</p><ol type="1" id="0a78ad78-031c-4e75-b797-c51555f0cc21" class="numbered-list" start="1"><li>The W3C Verifiable Credentials standard can depend on the <strong>Semantic Web RDF format.  This RDF format does not have the injectivity property which is crucial for signatures. </strong>See the below example (taken from a <a href="https://www.youtube.com/watch?v=0p_xfFiJEUU">video of Dr. Harald Sack</a>)  to understand the blank nodes better. <p id="46c566b1-8cf9-471b-9616-176edf918b5d" class="">Each component of an object is identified with a URI as depicted below.</p><figure id="5824697e-b273-4931-a3b6-dc766f13ab47" class="image"><a href="Vision%20A%20Critique%20of%20Immunity%20Passports%20and%20W3C%20De%201015e94925f94bfd8e4b85e40dfd2dfc/Untitled.png"><img style="width:624px" src="Vision%20A%20Critique%20of%20Immunity%20Passports%20and%20W3C%20De%201015e94925f94bfd8e4b85e40dfd2dfc/Untitled.png"/></a><figcaption>Source: <a href="https://www.youtube.com/watch?v=0p_xfFiJEUU">https://www.youtube.com/watch?v=0p_xfFiJEUU</a></figcaption></figure><p id="a7e79072-abc6-4e91-ae6d-47de219cc0d8" class="">Sometimes it may be more complicated, i.e. having more attributes as below.<div class="indented"><figure id="1cf6a953-52e4-4048-ba1f-31ba09a5e1a7" class="image"><a href="Vision%20A%20Critique%20of%20Immunity%20Passports%20and%20W3C%20De%201015e94925f94bfd8e4b85e40dfd2dfc/Untitled%201.png"><img style="width:1120px" src="Vision%20A%20Critique%20of%20Immunity%20Passports%20and%20W3C%20De%201015e94925f94bfd8e4b85e40dfd2dfc/Untitled%201.png"/></a><figcaption>Source: <a href="https://www.youtube.com/watch?v=0p_xfFiJEUU">https://www.youtube.com/watch?v=0p_xfFiJEUU</a></figcaption></figure><figure id="f69dfb83-f834-407a-9dd0-cc221ccf18f7" class="image"><a href="Vision%20A%20Critique%20of%20Immunity%20Passports%20and%20W3C%20De%201015e94925f94bfd8e4b85e40dfd2dfc/Untitled%202.png"><img style="width:1124px" src="Vision%20A%20Critique%20of%20Immunity%20Passports%20and%20W3C%20De%201015e94925f94bfd8e4b85e40dfd2dfc/Untitled%202.png"/></a><figcaption>Source: <a href="https://www.youtube.com/watch?v=0p_xfFiJEUU">https://www.youtube.com/watch?v=0p_xfFiJEUU</a></figcaption></figure><p id="d2c01e4f-1384-4a2f-b5e3-0a51bd9a9262" class="">
+</p></div></p><p id="652a5d7c-0046-463a-b789-67c576672c66" class="">So considering the example in the above graph, how can we distinguish which classroom will be used when? (<strong>It’s not unique</strong>) To solve this problem, blank nodes are used. Blank nodes classify attributes without naming them. They<strong> are anonymous by the definition and they cannot be referenced externally.</strong></p><figure id="3c219629-3bf9-4d9a-a430-2763ab4e65e8" class="image"><a href="Vision%20A%20Critique%20of%20Immunity%20Passports%20and%20W3C%20De%201015e94925f94bfd8e4b85e40dfd2dfc/Untitled%203.png"><img style="width:672px" src="Vision%20A%20Critique%20of%20Immunity%20Passports%20and%20W3C%20De%201015e94925f94bfd8e4b85e40dfd2dfc/Untitled%203.png"/></a><figcaption>Source: <a href="https://www.youtube.com/watch?v=0p_xfFiJEUU">https://www.youtube.com/watch?v=0p_xfFiJEUU</a></figcaption></figure><p id="dc45fc84-82fd-4821-b259-35ba534cb91c" class="">RDF uses <strong>semantic graphs of URIs </strong>(<em>Uniform Resource Identifiers</em>) <strong>and the serialization of the same graph can result in different ways.</strong> (Since the blank nodes are anonymous, the object can be translated as a bit-string in many ways.)<strong> </strong></p><p id="bd894301-1a6a-447b-9967-523eb59c9bf8" class="">It is stated in the paper that <strong>there exists mitigation of the above issue, i.e. using </strong><a href="https://datatracker.ietf.org/doc/html/rfc7519#page-6"><strong>IETF JSON Web Tokens (JWT)</strong></a><strong>. </strong>The below figure depicts the structure of the JWT.</p><figure id="d45cf435-045c-420c-bcf0-bb6265f07c23" class="image"><a href="Vision%20A%20Critique%20of%20Immunity%20Passports%20and%20W3C%20De%201015e94925f94bfd8e4b85e40dfd2dfc/Untitled%204.png"><img style="width:2381px" src="Vision%20A%20Critique%20of%20Immunity%20Passports%20and%20W3C%20De%201015e94925f94bfd8e4b85e40dfd2dfc/Untitled%204.png"/></a><figcaption>Source: <a href="https://research.securitum.com/jwt-json-web-token-security/">https://research.securitum.com/jwt-json-web-token-security/</a></figcaption></figure><p id="bce6e320-ce94-45ce-8a71-381ab89d8906" class="">Note that some<strong> JWT implementations may also cause problems because of the misused cryptography. </strong>Therefore, one should be careful while implementing a JWT. </p></li></ol><ol type="1" id="d3c27133-edb0-4f24-8ddb-315c4de4c9e9" class="numbered-list" start="2"><li>The author states that the Semantic Web also has issues with TLS support according to another <a href="https://ceur-ws.org/Vol-1951/PrivOn2017_paper_8.pdf">paper </a>of him. According to the RDF specification, the URIs of HTTP and HTTPS are not identical. The use of HTTP URIs on the Semantic Web is less than 0.1% of Semantic Web URIs. (in 2017)</li></ol><p id="39c5caf4-7390-4890-9ea5-5a3d4ccee215" class="">In conclusion, it is emphasized that the above problems can make RDF-based Verifiable Credential implementations vulnerable to some attacks.<strong> </strong>Namely, this may result in some attacks (signature exclusion/replacement attacks) in which an adversary can<div class="indented"><ul id="9fd25f35-5e1f-4f22-a7b1-025fb03712e5" class="bulleted-list"><li style="list-style-type:disc"><strong>remove the signature of a signed message, </strong></li></ul><ul id="66969500-cd38-4c22-9bfb-243cfdd26aa8" class="bulleted-list"><li style="list-style-type:disc"><strong>replace the signature with another one,  </strong></li></ul><ul id="8417087c-150e-4056-a7a1-fb0c6616c083" class="bulleted-list"><li style="list-style-type:disc"><strong>make the verifier accept the false message.</strong></li></ul></div></p><h1 id="682c24b5-5875-45ae-908c-c45b4f7454a2" class="">Critique on W3C Decentralized Identifiers</h1><p id="10161a12-9c31-46e2-ad80-5f61ccd1e642" class="">It is stated in the paper that using blockchains to store DIDs and DID documents may cause some issues, and these <strong>issues may be worse than in centralized or federated identity systems. Assume that the DIDs and DID documents are stored in public chains. In such cases, anyone can deploy correlation attacks. Anyone can learn the times of changes to DIDs. They can also learn the key material if the DID documents are also stored in the public chain.</strong></p><p id="3e1ac7bf-43f9-447c-b60a-ad47e62d0ca3" class="">It is criticized that<strong> it is only stated in the W3C DID standard that </strong><div class="indented"><blockquote id="b05afaab-2ead-4fc6-a875-c1db75177e75" class=""><em>it is strongly recommended that DID documents contain no PII </em>(<em>personally identifiable information</em>).  </blockquote><p id="b77a48c2-9818-4914-bd1f-e570bf76d064" class="">If the identifiers are stored on a public blockchain, W3C DIDs may be vulnerable to correlation attacks. And the <strong>use of one-time DIDs doesn’t solve this problem.</strong> Recall that the<strong> W3C DID standard also states that </strong></p><blockquote id="90caabe1-bfed-47e7-a029-3478a93ba499" class=""><em>the anti-correlation protections of pseudonymous DIDs are easily defeated if the data in the corresponding DID Documents can be correlated</em>. </blockquote></div></p><p id="f37568df-c8d1-4bae-b557-09b223920b45" class="">An example of the correlation is given in the paper. Assume that the <strong>service endpoints for COVID-19 testing centers are added to a public blockchain. </strong>Since it is public data, an adversary may learn from the update in the blockchain that </p><ul id="42aa69f2-2897-4e0c-8078-aaa4531ba999" class="bulleted-list"><li style="list-style-type:disc">the holders of those DIDs had COVID tests,</li></ul><ul id="06999452-18fb-4340-857d-1acc850f6ea7" class="bulleted-list"><li style="list-style-type:disc">the approximate location,</li></ul><ul id="a4c4eacd-048c-406c-ae01-e6e9d64f6f48" class="bulleted-list"><li style="list-style-type:disc">date of the test.</li></ul><h1 id="41ec70ae-cbe0-41c8-a5a8-c94be931deb9" class="">The Abuse of Security Standardization</h1><ul id="0def92d7-3a52-4ec1-9de1-56f409633781" class="bulleted-list"><li style="list-style-type:disc">According to the paper, the standardization efforts on security and privacy technologies should be studied by the community (e.g. security and privacy researchers). Most of the identity systems are constructed on the W3C DID and W3C VC standards which are not analyzed sufficiently by the community. The author asks how DIDs and VCs became W3C standards without analysis of the community.</li></ul><ul id="81a5a43e-44e0-416c-af6a-7ec54dff2a08" class="bulleted-list"><li style="list-style-type:disc">It is also criticized that it is hard to understand what is standard and what is not in the W3C standards.</li></ul><ul id="43073f54-9c59-467f-b0cb-77a2ff9e7251" class="bulleted-list"><li style="list-style-type:disc">On the other hand, the security and privacy community should focus on DIDs and VCs as they are used in constructions in various fields such as the internet of things, identity management systems, etc.</li></ul><h1 id="ab4f881c-2336-403b-abe1-ee3c9366177a" class="">Conclusion</h1><p id="169f5156-5833-4a1c-b311-1a9a27f73e43" class="">In conclusion, it is emphasized that specifications like W3C VC and W3C DID are problematic if they are not reviewed by the community (security experts). Some concrete actions are recommended for W3C:</p><ul id="fba7b13c-1735-4814-b3c6-15d91c3885b6" class="bulleted-list"><li style="list-style-type:disc">Until the injectivity problem is solved, all RDF-related formats can be dropped from VCs.</li></ul><ul id="21833f7e-759f-47bb-823b-6671869c8afc" class="bulleted-list"><li style="list-style-type:disc">Since the use of DIDs and DID documents in public blockchains are not secure, the work on DIDs at the W3C can simply be paused until security is guaranteed by the use of advanced cryptographic primitives. </li></ul><h1 id="b3f671e9-a773-46b0-8e2b-75e3fc18d26c" class="">References</h1><ul id="1912d551-6ff3-4e05-a816-36d6c5a38342" class="bulleted-list"><li style="list-style-type:disc"><a href="https://arxiv.org/pdf/2012.00136.pdf">Harry Halpin, </a><em><a href="https://arxiv.org/pdf/2012.00136.pdf">Vision: A Critique of Immunity Passports and W3C Decentralized Identifiers, </a></em><a href="https://arxiv.org/pdf/2012.00136.pdf">2020.</a></li></ul><ul id="2751380a-788f-49a0-9f29-c6a79095cbb2" class="bulleted-list"><li style="list-style-type:disc"><a href="http://ceur-ws.org/Vol-1951/PrivOn2017_paper_8.pdf">Harry Halpin, </a><a href="http://ceur-ws.org/Vol-1951/PrivOn2017_paper_8.pdf"><em>Semantic Insecurity: Security and the Semantic Web, 2017.</em></a></li></ul><ul id="22707b84-195a-46f3-aab4-ac52108bff68" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.w3.org/2001/sw/wiki/ShEx/RDF_serialization#Overview_and_discussions">https://www.w3.org/2001/sw/wiki/ShEx/RDF_serialization#Overview_and_discussions</a></li></ul><ul id="a7fd2b60-5a41-4781-b38d-e2d7a362cb7b" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.w3.org/TR/did-core/">https://www.w3.org/TR/did-core/</a> </li></ul><ul id="b2a487d4-8692-4c16-ab4e-cb7fa3ec4250" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=0p_xfFiJEUU">https://www.youtube.com/watch?v=0p_xfFiJEUU</a> </li></ul><ul id="87cff61b-8018-45b9-a21c-7a09e336020b" class="bulleted-list"><li style="list-style-type:disc"><a href="https://research.securitum.com/jwt-json-web-token-security/">https://research.securitum.com/jwt-json-web-token-security/</a></li></ul></div></article></body></html>

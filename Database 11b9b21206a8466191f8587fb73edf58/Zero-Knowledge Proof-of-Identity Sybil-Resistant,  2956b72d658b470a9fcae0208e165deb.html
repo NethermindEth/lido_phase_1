@@ -1,0 +1,707 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Zero-Knowledge Proof-of-Identity: Sybil-Resistant, Anonymous Authentication on Permissionless Blockchains and Incentive Compatible, Strictly Dominant Cryptocurrencies</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2956b72d-658b-470a-9fca-e0208e165deb" class="page sans"><header><h1 class="page-title"><strong>Zero-Knowledge Proof-of-Identity: </strong>Sybil-Resistant, Anonymous Authentication on Permissionless Blockchains and Incentive Compatible, Strictly Dominant Cryptocurrencies</h1><table class="properties"><tbody><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Abstract</th><td>Zero-Knowledge Proof-of-Identity from trusted public certificates (e.g.,
+national identity cards and/or ePassports; eSIM) is introduced here to
+permissionless blockchains in order to remove the inefficiencies of Sybil-
+resistant mechanisms such as Proof-of-Work (i.e., high energy and en-
+vironmental costs) and Proof-of-Stake (i.e., capital hoarding and lower
+transaction volume). The proposed solution effectively limits the number
+of mining nodes a single individual would be able to run while keeping
+membership open to everyone, circumventing the impossibility of full de-
+centralization and the blockchain scalability trilemma when instantiated
+on a blockchain with a consensus protocol based on the cryptographic
+random selection of nodes. Resistance to collusion is also considered.
+Solving one of the most pressing problems in blockchains, a zk-PoI
+cryptocurrency is proved to have the following advantageous properties:
+- an incentive-compatible protocol for the issuing of cryptocurrency
+rewards based on a unique Nash equilibrium
+- strict domination of mining over all other PoW/PoS cryptocurrencies,
+thus the zk-PoI cryptocurrency becoming the preferred choice by miners
+is proved to be a Nash equilibrium and the Evolutionarily Stable Strategy
+- PoW/PoS cryptocurrencies are condemned to pay the Price of Crypto-
+Anarchy, redeemed by the optimal efficiency of zk-PoI as it implements
+the social optimum
+- the circulation of a zk-PoI cryptocurrency Pareto dominates other
+PoW/PoS cryptocurrencies
+- the network effects arising from the social networks inherent to na-
+tional identity cards and ePassports dominate PoW/PoS cryptocurrencies
+- the lower costs of its infrastructure imply the existence of a unique
+equilibrium where it dominates other forms of payment</td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Year</th><td>2020</td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Link to the paper</th><td><a href="https://arxiv.org/pdf/1905.09093.pdf">https://arxiv.org/pdf/1905.09093.pdf</a></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Relevance score</th><td><span class="selected-value select-value-color-red">Not relevant</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Quality score</th><td><span class="selected-value select-value-color-yellow">3</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Labels</th><td><span class="selected-value select-value-color-gray">Centralized/permissioned</span><span class="selected-value select-value-color-red">Collusion prevention</span><span class="selected-value select-value-color-orange">Management of credentials</span><span class="selected-value select-value-color-pink">Verifiable Credentials</span><span class="selected-value select-value-color-pink">Web2 to Web3 data transfer</span></td></tr></tbody></table></header><div class="page-body"><p id="c3841f67-7b63-45a0-9df6-205ab760aba6" class=""><strong>Paper Link:</strong> <a href="https://arxiv.org/pdf/1905.09093.pdf">here</a></p><p id="70c27b22-589e-44e4-b680-55bd8adc9d3d" class=""><strong>Abstract</strong></p><ul id="a04cf008-7fcc-45e2-8020-42146448c4c7" class="bulleted-list"><li style="list-style-type:disc">Paper represents the concept of ZK-PoI (Proof Of Identity) blockchains</li></ul><ul id="de3cf136-d1fa-4d09-8f2d-3b18916482fd" class="bulleted-list"><li style="list-style-type:disc">The proposed solution effectively limits the number of mining nodes a single individual would be able to run while keeping membership open to everyone</li></ul><ul id="b8172d1b-aad5-4136-bac9-bcd08c5cbe12" class="bulleted-list"><li style="list-style-type:disc">The idea is to remove the inefficiencies of <strong>Sybil resistant</strong> mechanisms in PoW and PoS i.e chains i.e energy and capital and design a new ZK-PoI chain</li></ul><p id="be00ef5b-1043-4a6b-a6b9-9824f84cffb4" class="">
+</p><p id="960020fc-19ba-4638-bd1e-29a22725a3f7" class=""><strong>X.509</strong></p><ul id="6607e43b-5058-44b0-acda-cafedebad16a" class="bulleted-list"><li style="list-style-type:disc"><strong>X.509 </strong>is an <a href="https://en.wikipedia.org/wiki/International_Telecommunication_Union">International Telecommunication Union (ITU)</a> standard defining the format of <a href="https://en.wikipedia.org/wiki/Public_key_certificate">public key certificates</a></li></ul><ul id="67016734-376a-447c-90b0-431f4878f91c" class="bulleted-list"><li style="list-style-type:disc">An X.509 certificate binds an identity to a public key using a digital signature. A certificate contains an identity (a hostname, an organization, or an individual) and a public key</li></ul><ul id="b2c6eac8-9f4d-42ec-957d-505e39558f6c" class="bulleted-list"><li style="list-style-type:disc">An X.509v3 certificate has the following structure:<figure id="17d3e0e8-f3c5-4a68-9246-d29d29fce7e9" class="image"><a href="Zero-Knowledge%20Proof-of-Identity%20Sybil-Resistant,%20%202956b72d658b470a9fcae0208e165deb/Screen_Shot_2022-10-10_at_08.35.32.png"><img style="width:732px" src="Zero-Knowledge%20Proof-of-Identity%20Sybil-Resistant,%20%202956b72d658b470a9fcae0208e165deb/Screen_Shot_2022-10-10_at_08.35.32.png"/></a><figcaption>Source:<a href="https://arxiv.org/pdf/1905.09093.pdf">https://arxiv.org/pdf/1905.09093.pdf</a></figcaption></figure></li></ul><ul id="961333bd-1302-4b38-9422-f9e42e9c3cfd" class="bulleted-list"><li style="list-style-type:disc">To obtain a signed certificate, the entity creates a key pair and signs a Certificate Signing Request (CSR) with the private key</li></ul><ul id="ce9ee52f-f41e-4a0c-90a7-98d11614f144" class="bulleted-list"><li style="list-style-type:disc">CSR contains the applicant’s public key which is used to verify the signature of the CSR and a unique Distinguished Name within the organization. </li></ul><ul id="fd23de69-af41-4545-ba53-c15d3cbd10ae" class="bulleted-list"><li style="list-style-type:disc">Then, one of the intermediate certificate authorities issues a certificate binding a public key to the requested Distinguished Name and that also contains information identifying the certificate authority that vouches for this binding.</li></ul><p id="db0267df-d3ff-46ba-a480-e4848e85d22c" class="">
+</p><p id="73054dd2-340f-4df0-b6c3-5e0a543a4de5" class=""><strong>Verifiable Validation of X.509 Certificates as Anonymous Credentials</strong></p><ul id="8e87134a-a7dc-4d73-af4d-1e05747e38c3" class="bulleted-list"><li style="list-style-type:disc">the idea is to turn X.509 certificates into anonymous credentials.</li></ul><ul id="4ef5861d-c424-4f7f-b782-d987230419f3" class="bulleted-list"><li style="list-style-type:disc">use of zk-SNARKS to obtain a verifiable computation protocol so that a certificate
+the holder is able to prove that he holds a valid X.509 certificate chain with a
+unique Distinguished Name</li></ul><p id="30c4cd10-3208-4e70-9499-b781513904ed" class="">
+</p><p id="ce50e649-43bc-49c8-9921-88605558dea9" class=""><strong>Authentication Protocol</strong></p><ul id="d2e3bef9-2a29-4eed-901d-dce60df271e8" class="bulleted-list"><li style="list-style-type:disc">protocol generates a unique pseudonym for each miner</li></ul><ul id="23c0f258-0c79-48c2-9b28-3b7af4f52cb2" class="bulleted-list"><li style="list-style-type:disc">along with pseudonym protocol attaches verifiable proof that the new public key to be stored on-chain is signed with a valid public certificate included on a recognized certification authorities list</li></ul><ul id="5843a3f4-0002-46a6-8fa9-560df5ab3fff" class="bulleted-list"><li style="list-style-type:disc">the new public key is linked to the pseudonym that is uniquely linked to the citizen’s public key certificate</li></ul><p id="7b96198c-6b2d-4159-9961-367c9c81e2db" class="">
+</p><p id="1675a985-3fdc-48b6-bffd-d96fc969cc81" class="">Miners holding a public key certificate must execute the following steps</p><ul id="2b231464-dac6-49cf-aa3e-cc7911f62339" class="bulleted-list"><li style="list-style-type:disc">Create a deterministic public/secret key pair based on a secret passphrase</li></ul><pre id="e9278252-bca8-4f06-bf1d-0216b595c724" class="code"><code>pk, sk = Det_KeyPairGen (KDF (passphrase, hash(publicCert)))</code></pre><ul id="c5f36003-a375-4cec-a424-8b094e6830d2" class="bulleted-list"><li style="list-style-type:disc">Obtain a signature of the previously generated public key pk with the
+miner’s public key certificate</li></ul><pre id="d393e4e6-524b-4598-96d7-8e1791b6f697" class="code"><code>signPK = PKCS_Sign (secretKeypublicCert, pk)</code></pre><ul id="6f759ff5-e1ce-49cd-9be7-b8c33b19c66f" class="bulleted-list"><li style="list-style-type:disc">Check the validity of the certificate chain of the miner’s public key certificate and verify that the miner’s public key certificate is contained on a list of trusted certification authorities.</li></ul><ul id="fa71aa31-75fc-4d57-b66a-31336aa078f2" class="bulleted-list"><li style="list-style-type:disc">Obtain the unique identifier from the miner’s public key: <code>uniqueID = getID(publicCert)</code></li></ul><ul id="cd3af147-9765-4a1c-aff1-f93220dbab6b" class="bulleted-list"><li style="list-style-type:disc">Generate a deterministic pseudonym using the blockchain identifier:</li></ul><pre id="d19c5ae6-190e-4b4c-be7d-f7dd624ea00d" class="code"><code>signatureSecret = PKCS_Sign (secretKeypublicCert,”PREFIXED_COMMON_STRING”)
+
+pseudonym = Hash (signatureSecret||BlockchainIdentif ier||uniqueID) ||”REG”</code></pre><ul id="c76d074b-fd80-4f26-bed9-f5d764aeb909" class="bulleted-list"><li style="list-style-type:disc">Verify the signature signPK on the miner’s public key certificate pk:</li></ul><pre id="fb69a639-4d79-4be2-9fc5-bbb66bf072c7" class="code"><code>PKCS_Verify (publicCert, signPK)</code></pre><ul id="9c4cee9d-2fbd-4566-aa43-e93d1d128233" class="bulleted-list"><li style="list-style-type:disc">As the signatureSecret is calculated offline so its necessary to verify it using the miner’s public key certificate publicCert:</li></ul><pre id="6e6554da-05b6-4c19-8137-811bf36cdcf3" class="code"><code>PKCS_Verify (publicCert, signatureSecret)</code></pre><ul id="54a684d3-e219-4267-81de-c3ba969630a0" class="bulleted-list"><li style="list-style-type:disc">Generate the zero-knowledge proof π  of the miner’s public key certificate <strong>pk</strong>, the generated <strong>pseudonym,</strong> and signature <strong>signPK</strong> such that all the previous conditions hold</li></ul><ul id="31c252ad-0cf0-4479-bcc4-6d742830984f" class="bulleted-list"><li style="list-style-type:disc">Anonymously contact the permissionless blockchain: <ul id="65a5203a-f4a9-44b2-b789-e287b2bea5f0" class="bulleted-list"><li style="list-style-type:circle">register the generated <strong>pseudonym</strong>, the new public key <strong>pk</strong>, the signature
+<strong>signPK</strong> and <strong>π</strong></li></ul><ul id="d5ed7049-14f4-4709-ad1f-9f6fb91ba556" class="bulleted-list"><li style="list-style-type:circle">actual <strong>publicCert</strong>, <strong>uniqueID,</strong> and <strong>signatureSecret</strong> are not revealed </li></ul><ul id="bf042b26-42b3-4728-a996-855b328db1be" class="bulleted-list"><li style="list-style-type:circle">permissionless blockchain verifies π before adding the <strong>pseudonym, pk </strong>&amp;<strong> signPK</strong></li></ul><blockquote id="28b94c5a-02fd-4bee-99c5-afa04aa53b0c" class="">Note: here the miner is unable to register multiple pseudonyms so he can only use one running node that would be signing messages with the generated secret key <strong>sk</strong>. Other nodes would be able to efficiently verify <strong>π</strong> to confirm that the public key <strong>pk</strong> is signed by someone from an allowed certificate authority and that the pseudonym is the miner’s unique alias for the blockchain</blockquote><p id="158f89af-b77f-45d2-bff8-156dc0d98e65" class="">
+</p></li></ul><p id="8183e9ea-2a07-4c11-9caa-8ebc500969c6" class=""><strong>Zero-Knowledge Protocols ePassports</strong></p><ul id="5cd9b594-60f3-4be7-a48a-3f574f22c88d" class="bulleted-list"><li style="list-style-type:disc">analogous to the zero-knowledge protocols for X.509 </li></ul><ul id="4b7841e2-5e62-4b34-bccd-ec8806daef72" class="bulleted-list"><li style="list-style-type:disc">considers the  details of ePassports<figure id="e0b200f0-7c9c-4364-b92d-9e03fb6e33a4" class="image"><a href="Zero-Knowledge%20Proof-of-Identity%20Sybil-Resistant,%20%202956b72d658b470a9fcae0208e165deb/Screen_Shot_2022-10-11_at_12.12.09.png"><img style="width:336px" src="Zero-Knowledge%20Proof-of-Identity%20Sybil-Resistant,%20%202956b72d658b470a9fcae0208e165deb/Screen_Shot_2022-10-11_at_12.12.09.png"/></a><figcaption>Source:<a href="https://arxiv.org/pdf/1905.09093.pdf">https://arxiv.org/pdf/1905.09093.pdf</a></figcaption></figure></li></ul><ul id="44f1f795-e669-438f-9836-51a65345f10d" class="bulleted-list"><li style="list-style-type:disc">contains a unique keypair with the public key on Data Group 15 and the private key hidden within the chip</li></ul><ul id="6237fb6e-b084-4274-aaa7-7c2963558de6" class="bulleted-list"><li style="list-style-type:disc">with the key-pair, the Active Authentication protocol can be used to sign random challenges</li></ul><ul id="48f7c4df-1831-4791-91bf-84eec3519bac" class="bulleted-list"><li style="list-style-type:disc"><strong>Anonymous miner registration </strong><ul id="9337d3bd-2008-4302-82c8-655d920a4d37" class="bulleted-list"><li style="list-style-type:circle">protocol generates a unique pseudonym for each miner</li></ul><ul id="46b6480c-7cd5-4d1c-8844-b753c4a07956" class="bulleted-list"><li style="list-style-type:circle">along with pseudonym protocol attaches verifiable proof that the new public key to be stored on-chain is signed with a valid public certificate included on the list of Country Signing Certificate Authorities</li></ul><ul id="e2507176-0103-4b86-bdd8-5bdfd1b5005a" class="bulleted-list"><li style="list-style-type:circle">the new public key is linked to the pseudonym that is uniquely linked to the citizen’s public key certificate of the passport holder</li></ul></li></ul><p id="7e87b574-0692-4ed8-91ca-52675449faad" class="">Then the authentication protocol will be the same as <a href="Zero-Knowledge%20Proof-of-Identity%20Sybil-Resistant,%20%202956b72d658b470a9fcae0208e165deb.html">above</a>.</p><p id="c491bb75-e66c-45ad-8bf0-13d06d014b63" class="">
+</p></div></article></body></html>

@@ -1,0 +1,670 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Sismo</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="0da55ab2-844b-4fd6-ad82-3ee5f45216fd" class="page sans"><header><h1 class="page-title">Sismo</h1><table class="properties"><tbody><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Abstract</th><td>Sismo is a modular protocol issuing ZK Badges for reputation portability and aggregation. </td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Year</th><td></td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Link to the paper</th><td><a href="https://www.sismo.io/">https://www.sismo.io/</a></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Relevance score</th><td><span class="selected-value select-value-color-green">Very relevant</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Quality score</th><td><span class="selected-value select-value-color-purple">N/A</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Labels</th><td><span class="selected-value select-value-color-gray">Centralized/permissioned</span><span class="selected-value select-value-color-default">Implementations</span><span class="selected-value select-value-color-purple">Possible tool in larger solution</span></td></tr></tbody></table></header><div class="page-body"><p id="cb336515-885d-4ccc-8824-3513e4a1ae5f" class="">Sismo is a protocol for the creation of zero-knowledge attestations. More specifically, a proof (zero-knowledge or not) is submitted by a user to an attester. The attester verifies the proof and certifies its validity (on a registry and by minting a soulbound token), so that other parties can trust the user’s claim without needing to formally verify the proof themselves.</p><p id="f0cab04c-eb05-40bb-87f4-2898de3f15c6" class="">As an example, Alice can prove that she voted in a DAO vote, without revealing what she voted for.</p><p id="7737afe4-5720-4a4f-b2c4-f0247d12658f" class="">Built on four modular concepts: </p><ol type="1" id="5407c6bb-06ad-4256-a53d-00bd2338abfa" class="numbered-list" start="1"><li><strong>Groups of Accounts (Available Data)</strong>: Data source for attestations</li></ol><ol type="1" id="40327df0-4d29-4a3f-a288-a5c261bf7443" class="numbered-list" start="2"><li><strong>Attesters (Smart Contracts)</strong>: Issuers of attestations<ol type="a" id="deaf86e9-d8fa-4b96-a3d7-5c61f358a207" class="numbered-list" start="1"><li><em>Verify Request</em></li></ol><ol type="a" id="ce12f054-e429-4e66-b249-3c879dcb8a2e" class="numbered-list" start="2"><li><em>Build Attestations</em></li></ol><ol type="a" id="23ee257d-2644-48d0-b43e-722eebc05707" class="numbered-list" start="3"><li><em>Generate Attestations</em></li></ol></li></ol><ol type="1" id="aaf2fc8a-ff65-41ba-8e65-ccfe9a430483" class="numbered-list" start="3"><li><strong>Attestations Registry (Smart Contract): </strong>Store of attestations<ol type="a" id="41d9def5-6163-4558-a02d-ef426fb621d6" class="numbered-list" start="1"><li><em>Attestations Collection</em></li></ol><ol type="a" id="c04793dc-7383-4072-ac15-7454753f6272" class="numbered-list" start="2"><li><em>Registry Governance</em></li></ol></li></ol><ol type="1" id="39f1b699-3706-4f39-a143-20cb0b0ee7c3" class="numbered-list" start="4"><li><strong>Badges (ERC1155): </strong>Non Transferrable Token (aka soulbound) representation of attestations</li></ol><figure id="02ec56c0-7641-4d56-a537-1799a1fa318d" class="image"><a href="Sismo%200da55ab2844b4fd6ad823ee5f45216fd/Untitled.png"><img style="width:3591px" src="Sismo%200da55ab2844b4fd6ad823ee5f45216fd/Untitled.png"/></a></figure><p id="206b2a2e-409e-4ea4-bf82-daebf069892e" class="">Let us explain each of the concepts in more detail.</p><h1 id="d05187c9-76f4-47ee-8e9e-d72e0f524e62" class="">Groups of accounts:</h1><p id="c3e71248-34e3-4770-abfb-50ee2ad1c33f" class="">In this context, an account is a pair (account ID, value). Examples of groups:</p><ul id="3f3f7117-2a93-4c98-9a54-3ae9bef70b83" class="bulleted-list"><li style="list-style-type:disc">ENS DAO voters. Account values = number of votes</li></ul><ul id="0da93c3f-d35d-4eaa-a08d-34f51c28a82d" class="bulleted-list"><li style="list-style-type:disc">Early Ethereum users. Account values = number of transactions made before 2018</li></ul><p id="34e67ef4-088d-4621-b6ad-fccd8863cce9" class="">Attesters issue attestations from<strong> claims about group membership </strong>that are made by users. (Example: I made more than 50 transactions on Ethereum before 2018)</p><p id="41de08a4-6b83-43ef-8871-c72a59925d0e" class="">How are groups generated?</p><ul id="c7424b3a-fa53-4e28-96bc-4427264ad75c" class="bulleted-list"><li style="list-style-type:disc">Sismo has built an off-chain infrastructure that periodically generates off-chain groups. Groups are stored periodically off-chain as cells in a bi-dimensional data structure (see diagram below: rows represent each different group instance and columns represent the timestamps at which they are captured) These off-chain groups are reusable—they can be used to make available groups for several attesters.</li></ul><figure id="7ab78942-a940-42f5-afbb-315094c82b20" class="image"><a href="Sismo%200da55ab2844b4fd6ad823ee5f45216fd/Untitled%201.png"><img style="width:4826px" src="Sismo%200da55ab2844b4fd6ad823ee5f45216fd/Untitled%201.png"/></a></figure><ul id="9125f930-e038-4ad4-b5f1-d86bac073b56" class="bulleted-list"><li style="list-style-type:disc">To validate these groups, a Merkle tree can be constructed, and only the Merkle root needs to be posted on-chain!</li></ul><ul id="34889a1d-c24a-43b5-b85b-9672a715cdf8" class="bulleted-list"><li style="list-style-type:disc">We have concers about <strong>these groups not being generated in a trustless way. </strong>“Anyone can propose a new group by opening a PR to Sismo’s data source repository.” This seems cumbersome and unscalable.<ul id="0b03df7f-7177-4d0b-8bf0-1cc29b1280cc" class="bulleted-list"><li style="list-style-type:circle">More specifically, there is the following censorship concern. Groups are generated off-chain by Sismo, and a Merkle root is generated out of the group data. A Merkle proof can be submitted by an account owner and verified on-chain (the verifier will check the Merkle path AND check that each leaf is indeed a member of the group using on-chain data). However, if Sismo did not include a given user in the corresponding group, their corresponding account won’t belong to the Merkle tree, and so they won’t be able to generate a proof. In other words, we can say Sismo attestations are sufficient, but not necessary, for a claim’s validity.</li></ul><ul id="d8002b3b-21bb-45bb-bcd3-9a0bd3c64f3c" class="bulleted-list"><li style="list-style-type:circle">An idea: how could we improve this? We could set up an “optimistic” structure, where the Merkle trees built by Sismo off-chain can be challenged and corrected.</li></ul></li></ul><h1 id="4e3cfe91-8790-4300-99b1-41d2b700fcb6" class="">Attesters:</h1><p id="af0a5422-10d6-4f10-9e74-1443eba60249" class=""><strong>Attesters </strong>are core smart contracts of the Sismo protocol. They are in charge of <strong>verifying </strong>user requests and <strong>issuing </strong>attestations.</p><p id="c17dc265-d913-4cb7-b9b3-aa0ca96c709b" class="">Available groups: A group is said to be <strong>available for an attester </strong>when the attester has access to on-chain data in the specific format that it requires. This enables the attester to validate user claims. </p><p id="52b1281d-511b-4c84-9f05-a62b73c83ae1" class="">User request: a user makes a claim about his belonging to a group. Then he requests (by sending his claim and a proof of his claim) an attestation from the attester, to be sent to a certain address (in form of an SBT)</p><p id="455ca01d-63ac-4f48-8189-0e0eae8c41fc" class="">What can proofs be in this context?</p><ul id="41b7e4b8-efc9-4d50-a254-a4caf05bd14f" class="bulleted-list"><li style="list-style-type:disc">No proof, simply verifying a token is being held.</li></ul><ul id="564380ee-6c58-421f-8a3b-4eaf7c9ca887" class="bulleted-list"><li style="list-style-type:disc">Verifying a public Merkle proof (e.g. my account belongs to an on-chain Merkle tree of DAO governance accounts).</li></ul><ul id="7985557e-621b-4740-b80a-3714400aff05" class="bulleted-list"><li style="list-style-type:disc">Verifying a zk-proof. Sismo leverages <a href="https://eprint.iacr.org/2021/641.pdf">Hydra</a> to generate a zero knowledge delegated proof of ownership. In general, it is used for anonymous Merkle proofs.<ul id="1a20cec3-47c4-4e3d-8d30-978df93181f7" class="bulleted-list"><li style="list-style-type:circle">Example: I want to prove a source account that I own holds over a certain amount of tokens, without revealing the source account or the exact amount of tokens.</li></ul><ul id="cb6fa658-a07e-4df9-8d27-05240dcd5ba5" class="bulleted-list"><li style="list-style-type:circle">The soulbound token is sent to a destination account.</li></ul></li></ul><p id="426c373a-7635-4650-8642-7a8a9d6f6762" class="">Remark: all the proofs implemented so far are Merkle proofs!</p><p id="a60e1acd-e9e8-47bc-9a14-bed3030a02e5" class="">Once the proof submitted by the user is verified, the attester will build an attestation in the Attestation Registry.</p><h1 id="f1971e63-eae9-429a-8ddb-812cbf272480" class="">Attestation registry:</h1><p id="78c0aeb2-82e8-41c2-aa25-faf901dc5ff1" class="">The <strong>Attestations Registry</strong> is the main smart contract of the Sismo protocol; it&#x27;s in charge of <strong>recording</strong> all attestations issued by authorized <mark class="highlight-yellow_background">(by Sismo governance)</mark> issuers. Attestations are grouped into <strong>Collections.</strong></p><ul id="41b496c1-9a5f-4b85-b14c-f9827e144ce3" class="bulleted-list"><li style="list-style-type:disc">Attestation Registries will be deployed on multiple chains with a focus on Ethereum L2s.</li></ul><p id="7ce6abc7-9f2d-4f5c-b329-5cf91ec81e2d" class="">The Attestations Registry is split into <strong>Attestations Collections</strong>. A collection bundles owners that share some historical or reputation characteristics.</p><ul id="79a6c624-b8ce-40b1-bd87-d849e5ffd605" class="bulleted-list"><li style="list-style-type:disc">Only one attestation is stored on-chain per user per collection. A user can update an attestation, which will override the previous attestation.</li></ul><p id="e8eab4cd-08be-4ec3-a9c8-bb9f8f77bf39" class="">Authorized issuers:</p><ul id="f24ee512-8e08-4b9c-be7b-e527ca1633fe" class="bulleted-list"><li style="list-style-type:disc">The <strong>Sismo Governance </strong>(currently a multisig owned by Sismo Genesis Team) is the owner of the Attestation Registry. The Sismo Governance is the only entity allowed to authorize/unauthorize <strong>issuers </strong>to record attestations in the registry.</li></ul><h1 id="8d7bff32-d81a-4b12-89aa-e8b947a9e413" class="">Badges</h1><p id="d51f358c-9c44-4e8d-9560-89f833dbf67d" class="">Badges are non-transferable (aka soulbound) ERC1155 tokens, received by a user after an attestation is issued in the Registry.</p><figure id="6900b201-201a-42c1-8215-8d6d0f105dc7" class="image"><a href="Sismo%200da55ab2844b4fd6ad823ee5f45216fd/Untitled%202.png"><img style="width:1410px" src="Sismo%200da55ab2844b4fd6ad823ee5f45216fd/Untitled%202.png"/></a></figure><h1 id="fbd02997-5f95-4eb6-8aa8-61aabbb31cfc" class="">Remarks</h1><p id="f504fcfe-1ac9-454e-b6cf-9b407657f364" class="">We looked into Sismo in order to “get off-chain data on chain in a private and verifiable manner”. Analysis of Sismo’s approach:</p><ul id="cde1bbf9-7a80-4bd6-8bba-46b3e0c3fd71" class="bulleted-list"><li style="list-style-type:disc">Attesters are smart contracts, so once deployed one can check whether they are verifying the correct kind of proofs.</li></ul><ul id="d1c7643a-aa4f-4a92-b46e-e0284794b776" class="bulleted-list"><li style="list-style-type:disc">The attestator registry is also a smart contract—can Sismo kick out attesters from its registry? Yes. “Owner of the contract, has the right to authorize/unauthorize attestations issuers”. It does not look like the owner can delete or forge attestations, though.</li></ul><ul id="2d3b156e-31df-4d04-8254-82d1aeb8c38a" class="bulleted-list"><li style="list-style-type:disc">For the currently-implemented case of Merkle proofs of Merkle roots stored on-chain, their approach depends on the correct computation of the Merkle root, i.e., on including all of the corresponding leaves. </li></ul><p id="e7180403-68b5-4580-8d25-337359fb82c7" class="">In conclusion, proofs are trustless, but an honest group member may not be able to generate a proof under Sismo censorship or malfunction.</p><p id="71ef7eae-7685-4ade-940f-ba76508c3ece" class="">Another concern to point out is users selling zk-badges to accounts that they do not own. This concern has been pointed out by Evin McMullen from Disco during <a href="https://youtu.be/EZ_Bb6j87mg?t=297">this talk</a>.</p><ul id="ee96b736-6b8d-4f27-8cbd-6a241d50831b" class="bulleted-list"><li style="list-style-type:disc">What mechanism could counter this? Can we think of a way to transfer the private key of the first account (in an encrypted way) to the owner of the second account, so that users are discouraged from selling zk-badges?</li></ul><p id="93b5afac-fac8-4ae2-b6f5-221784d86c60" class="">
+</p></div></article></body></html>

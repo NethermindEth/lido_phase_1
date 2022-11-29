@@ -1,0 +1,735 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>KILT</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="d0fe8077-024f-4f52-b429-e2c2f32be8c5" class="page sans"><header><h1 class="page-title">KILT</h1><table class="properties"><tbody><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Abstract</th><td>KILT is a protocol for self-sovereign data and interoperability built on top of the permissionless KILT blockchain. The core component of KILT is a digital identity protocol for 1. generating and managing <strong>decentralized identifiers (DIDs)</strong>
+, and 2. issuing and presenting digital <strong>verifiable credentials (VCs)</strong>
+. In contrast to other centralized alternatives, KILT features self-sovereign data as well as revocable credentials anchored to the KILT blockchain.</td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Year</th><td></td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Link to the paper</th><td><a href="https://docs.kilt.io/docs/concepts/what-is-kilt">https://docs.kilt.io/docs/concepts/what-is-kilt</a></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Relevance score</th><td><span class="selected-value select-value-color-yellow">Relevant</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Quality score</th><td><span class="selected-value select-value-color-green">4</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Labels</th><td><span class="selected-value select-value-color-purple">Data to Web3</span><span class="selected-value select-value-color-yellow">Linkage of Web2 Ids</span><span class="selected-value select-value-color-default">Not Sybil resistant</span><span class="selected-value select-value-color-brown">Permissionless</span><span class="selected-value select-value-color-purple">Possible tool in larger solution</span><span class="selected-value select-value-color-gray">Self-sovereign identity</span><span class="selected-value select-value-color-pink">Verifiable Credentials</span></td></tr></tbody></table></header><div class="page-body"><p id="b170b5ce-7dd7-488d-b2ae-57d6eb80023e" class="">
+</p><p id="059b7221-ee5f-43e4-907f-a27ea0687956" class="">KILT is a protocol for self-sovereign data and interoperability built on top of the permissionless KILT blockchain. The core component of KILT is a digital identity protocol for 
+1. generating and managing <strong>decentralized identifiers (DIDs)</strong>
+2. issuing and presenting digital <strong>verifiable credentials (VCs).</strong>
+In contrast to other centralized alternatives, KILT features self-sovereign data as well as revocable credentials anchored to the KILT blockchain.
+
+
+<strong>With KILT, anyone (or anything) can become an entity in the network by creating an identity or defining qualities or characteristics.</strong> The identity in KILT is created as a public-private key pair, which is then linked to a Decentralised Identifier (DID). In this case, the entity that created the DID is in full control.</p><figure id="2a917cf3-ca68-4b14-8f38-95b4fbb4b6e1" class="image"><a href="KILT%20d0fe8077024f4f52b429e2c2f32be8c5/kilt1.png"><img style="width:1162px" src="KILT%20d0fe8077024f4f52b429e2c2f32be8c5/kilt1.png"/></a><figcaption>Source: <a href="https://www.kilt.io/wp-content/uploads/2021/05/SocialKYC_PolkadotDecoded_19May2021_KILTProtocol.pdf">SocialKYC_PolkadotDecoded_19May2021_KILTProtocol.pdf</a></figcaption></figure><figure id="49f637d4-d98b-4205-b786-2579df44ca7b" class="image"><a href="KILT%20d0fe8077024f4f52b429e2c2f32be8c5/kilt2.png"><img style="width:1111px" src="KILT%20d0fe8077024f4f52b429e2c2f32be8c5/kilt2.png"/></a><figcaption>Source: <a href="https://www.kilt.io/wp-content/uploads/2021/05/SocialKYC_PolkadotDecoded_19May2021_KILTProtocol.pdf">SocialKYC_PolkadotDecoded_19May2021_KILTProtocol.pdf</a></figcaption></figure><p id="0424cb49-a37c-47f1-a0fc-73883321af66" class="">
+</p><p id="b9e1ff68-71ee-4aab-904d-2507e2121127" class="">
+</p><p id="187a2cd1-cefc-4747-a7da-7c2049c9a24b" class=""><strong>KILT Decentralized Identifiers (DIDs)</strong></p><p id="c4929e27-c9ad-4bc1-99fa-d92456513691" class=""><strong>Light DIDs: </strong>It is possible to generate and use KILT DIDs offline without any internet connection, which is called a light DID.</p><figure id="b2e1e828-73a5-4fb0-9d9c-3d755d91ed09" class="image"><a href="KILT%20d0fe8077024f4f52b429e2c2f32be8c5/kilt10.png"><img style="width:747px" src="KILT%20d0fe8077024f4f52b429e2c2f32be8c5/kilt10.png"/></a><figcaption>Source: <a href="https://docs.kilt.io/docs/concepts/did">KILT Decentralized Identifiers (DIDs) | KILT Protocol</a></figcaption></figure><p id="ba473a49-3d2e-482b-971d-5680321d390f" class="">
+</p><p id="334391b7-5231-4c79-b4e4-975ec60f2c8f" class=""><strong>Full DIDs: </strong>In order to create a full DID, it is necessary to interact with the KILT blockchain. In order to create a full DID, it is necessary to interact with the KILT blockchain. It is therefore necessary to submit the DID creation process to a KILT address with enough funds to cover transaction fees and deposit requirements.</p><figure id="f0028a12-e61a-428c-bff6-f8b28c664f66" class="image"><a href="KILT%20d0fe8077024f4f52b429e2c2f32be8c5/kilt11.png"><img style="width:667px" src="KILT%20d0fe8077024f4f52b429e2c2f32be8c5/kilt11.png"/></a><figcaption>Source: <a href="https://docs.kilt.io/docs/concepts/did">KILT Decentralized Identifiers (DIDs) | KILT Protocol</a></figcaption></figure><p id="beb82a95-7bab-42ae-a3ee-56967812838f" class=""><strong>Claim Types (CTYPEs)</strong></p><p id="1da4f9e4-bb6f-4e0f-a856-36ab88a124a0" class="">A claim&#x27;s structure (i.e., its data model) is defined by CTypes, which are specific to KILT. Using CTypes, you can annotate and validate JSON documents using JSON Schema. Property types and types of properties are defined by the schema, e.g., string, number, object, etc.</p><p id="e556e3a5-cf4f-4bee-ab35-58f1d3443dbc" class="">
+CTYPEs can be created without permission. CTYPEs can be created by anyone and referenced on the KILT Blockchain.</p><p id="0e604961-9c86-4db2-83a8-d51216554085" class="">
+CTypes can only be viewed in blockchain block histories, but their hashes are anchored to transaction histories.</p><h1 id="6e500089-bc8d-4158-9f59-bde130383329" class="">Roles
+</h1><figure id="55d0823d-baba-4529-9a5a-c33cadb9e81a" class="image"><a href="KILT%20d0fe8077024f4f52b429e2c2f32be8c5/kilt12.png"><img style="width:462px" src="KILT%20d0fe8077024f4f52b429e2c2f32be8c5/kilt12.png"/></a></figure><p id="f189bdc1-fc2b-4f3a-97ea-474089f17df1" class="">
+</p><p id="84e3a602-08b8-41bd-9d79-8bb52eae9a89" class=""><strong>Claimer(Holder)</strong></p><p id="714550ff-a02c-4258-b26d-a15cbd4a9e1a" class="">Claims are generated by entities (individuals, organizations, objects) and stored by the client wallet software using a decentralized identifier. With KILT, the Claimer always signs the claim, proving that the claim was created by the same entity as the claim owner (i.e. the Claimer is always the origin of the claim). Each Claim type is defined by a Claim Type Definition (<strong>CTYPE</strong>), which is a well-defined structured data structure defining the properties and rules of a specified claim type.
+
+Claimer controls
+ ● who to present the Credential to
+ ● which Credential is presented and
+ ● which parts of the Credential the Verifier can see.
+
+<strong>Attester (Issuer)
+</strong>In KILT Protocol, KILT tokens can be transferred to Attesters so that Claimers can pay for their work. During this process, the Attesters verify the validity of the Claimant&#x27;s assertions. ****Attesters complete Credentials by cryptographically signing attestations and returning them to Claimers. <strong>A hash of credentials is then sent to the blockchain by Attesters.</strong> Attesters will only perform limited checks and confirm a limited range of properties. Attesters choose one or more Claim Types (CTYPEs) in line with these capabilities and offer to attest them on behalf of interested Claimers. There are various criteria that Claimers can use to choose an Attester (price, speed, credential types, number, and importance of Verifiers that trust their credentials). For Attesters, this creates new business opportunities. As another means of enhancing trust, attesters can cooperate with other attesters or delegate trust to other parties.
+
+<strong>Verifier</strong></p><p id="75e51b3a-3dba-4325-b7a9-7a128c814a58" class="">Credentials are created by the Verifier as he offers a service to the Claimers. In the absence of trust between Claimers and Verifiers, the Verifiers rely on the Attesters. <strong>Each Attester is chosen by the Verifier.</strong> Upon choosing Attesters, Claimers should ensure they are trusted by Verifiers and relevant to their use case. The Verifier can check if the same hash of the Credential is also present on the blockchain after receiving the Credential from the Claimer.</p><p id="00241237-e543-495c-80c8-7f7288a5d6b2" class="">Verifiers identify Claimers through a Cryptographic Challenge. The KILT Blockchain uses Merkle Trees for the validation of Credentials with hashes retrieved from it, even if the Claimer reveals only parts of the Credential.</p><p id="e1f95d72-e175-4b06-8078-ab2423180a8b" class="">
+</p><p id="b09b81a7-4ee5-4228-b20c-74acbbbd8dbf" class=""><strong>Revocable Attestations
+</strong>Putting Credentials in the Claimer&#x27;s hands creates a new problem: since the Attester is no longer involved in the verification process, he cannot revoke Credential validity. In order to solve this problem, the KILT Blockchain stores a hash of the Attestation. On the KILT blockchain, attestations can be securely stored and time-stamped, which serves as a notary function and allows the revocation of credentials.</p><p id="f92ca80e-1ecd-456b-9040-077b0a029040" class="">Four pieces of information are written onto the blockchain during an on-chain Attestation:</p><ul id="bae4e4c1-6c57-469f-9774-f33a8b1659bc" class="bulleted-list"><li style="list-style-type:disc">Public key of the Attester</li></ul><ul id="d9ae73c9-751a-4391-985a-22d311aa67b9" class="bulleted-list"><li style="list-style-type:disc">Hash of the Claim that is being attested</li></ul><ul id="aeee5aec-c294-45a8-aeff-ea3a4aa45b28" class="bulleted-list"><li style="list-style-type:disc">Signature of the Attester</li></ul><ul id="c2271266-6e33-420b-95be-fbfe33898817" class="bulleted-list"><li style="list-style-type:disc">Placeholder field to mark if the Attestation is revoked later.</li></ul><p id="a1f6bdf4-6ae8-4b59-82a3-e093503f4143" class="">
+</p><p id="af556505-d5fb-4e4e-847e-964fe609b920" class="">Credentials received from Claimants can be hashed by Verifiers and checked on the blockchain to see if there is an identical hash. By doing this, they can verify that the action was taken. Attesters have the right to revoke the blockchain hash, thus invalidating it. Blockchain verifyors will discover the revocation by checking the blockchain hash.
+</p><p id="ee1a3025-545d-40da-8520-f2f9483aa2f3" class="">This process can also be applied to Legitimation and Delegation of Trust (which will be described later).</p><p id="9d9be8f3-dfdb-45b3-b82c-2ba709f691dd" class="">
+No information about the Claim is revealed, and it is not made publicly accessible on the blockchain. Attester&#x27;s public key is stored on the chain. Verifiers use this property to determine if an Attester can be trusted.</p><p id="0a3bca15-5480-48c0-affc-83f8a9ee3020" class="">
+</p><p id="433e2a4a-ffcf-40a7-a916-23b1d7ade4c6" class=""><strong>Payment Transactions
+</strong>KILT Coin will be the cryptocurrency for the KILT blockchain. KILT Coins are used to encourage security and continuous network operation. Furthermore, the KILT Coin is used to register CTYPEs, issue Attestations, and revoke licenses on the blockchain. Paying the Attester for the Attestation service is done with the KILT Coin.
+
+<strong>
+</strong></p><h1 id="8f31d08f-215c-42d8-b564-effd65290013" class="">Building Top-Down Structures in KILT</h1><p id="57393abd-bab3-477a-b6d1-a681e1e5e45e" class="">Due to the <strong>permissionless nature of KILT</strong>, anyone can become an Attester and provide attestations. The KILT network is designed to remove barriers to being part of the system and embodying any role. <strong>Therefore, Claimers and Verifiers know which Attester to trust.</strong> Thus, Verifiers accept a Claim based on the trust they place in Attesters.</p><p id="d8cab856-b65d-4482-9fcd-25e156a0956b" class="">Trust between a Verifier and an Attester can be gained in different ways: The Verifier can directly trust an Attester. A second method of gaining trust is through legitimation or delegation from another Attester, and the Verifiers&#x27; trust in the Attester is based upon a specific trust structure, which models real-life trust relationships.</p><p id="a3f3e824-5267-408b-a5de-5cc5d40f1a43" class="">Top-down trust refers to trust between entities based on their status, reputation, or just their definition.</p><figure id="4791740a-885d-4887-b18b-7fa290a52882" class="image"><a href="KILT%20d0fe8077024f4f52b429e2c2f32be8c5/kilt6.png"><img style="width:502px" src="KILT%20d0fe8077024f4f52b429e2c2f32be8c5/kilt6.png"/></a><figcaption>Source: <a href="https://www.kilt.io/wp-content/uploads/2020/01/KILT-White-Paper-v2020-Jan-15.pdf">KILT-White-Paper-v2020-Jan-15.pdf</a></figcaption></figure><p id="c3875dcd-34fa-4d41-b2ed-24ae93e20c15" class="">
+</p><p id="f1de8936-e89c-4506-b399-b59a11835c25" class="">There is a legitimation that enables another entity to obtain specific permissions (capabilities) from a trusted source.
+Here is the simplest and most general example: Attester A1 legitimizes A2&#x27;s arbitrary claim by attesting it. This attested claim (legitimation) is then used by Attester A2 to serve Claimer C.</p><figure id="84fce502-aad3-4539-89e8-488ea8035444" class="image"><a href="KILT%20d0fe8077024f4f52b429e2c2f32be8c5/kilt7.png"><img style="width:731px" src="KILT%20d0fe8077024f4f52b429e2c2f32be8c5/kilt7.png"/></a><figcaption>Source: <a href="https://www.kilt.io/wp-content/uploads/2020/01/KILT-White-Paper-v2020-Jan-15.pdf">KILT-White-Paper-v2020-Jan-15.pdf</a></figcaption></figure><p id="95da10f3-15a7-4623-b99b-e2677bb008fd" class="">
+</p><p id="24870d3f-fd8c-4d5d-8050-1ee6a22c15b5" class="">The Claimer must check the legitimation of the Attester when requesting an attestation. Verifiers should also check that the legitimation chain is complete (i.e. none of the links have been revoked) before validating a credential. In order to ensure that the legitimation chain is valid, the Claimer and Verifier must be able to access all the necessary information.
+
+</p><h1 id="4acc62b2-eb51-4533-b1e5-ec3c0e8d5d77" class=""><strong>Hierarchy of Trust </strong></h1><p id="ded667e0-4e99-4260-81e0-ab758c744ba0" class="">In a Hierarchy of Trust, the KILT Validator Nodes verify the complete authorization or delegation chain for certifying a CTYPE.
+By implementing this concept for KILT, trust can be delegated to other entities and a hierarchy of trust (i.e. a CTYPE) will be built around specific use cases. From the root, entities can determine who has the right to issue attestations for certain CTYPEs.</p><figure id="cfde23a1-0afa-4968-810b-0075654986d3" class="image"><a href="KILT%20d0fe8077024f4f52b429e2c2f32be8c5/kilt8.png"><img style="width:937px" src="KILT%20d0fe8077024f4f52b429e2c2f32be8c5/kilt8.png"/></a><figcaption>Source: <a href="https://www.kilt.io/wp-content/uploads/2020/01/KILT-White-Paper-v2020-Jan-15.pdf">KILT-White-Paper-v2020-Jan-15.pdf</a></figcaption></figure><p id="cb09990a-2297-4460-ae3f-41ea4d804704" class="">It can either be inherited directly or indirectly by the attester from a trusted source.</p><p id="f3a8d696-4d23-478a-bdbf-1c9dcb0c31de" class="">
+</p><p id="e28179cf-63ba-42c1-ad79-9dea4ad0ef13" class=""><strong>Structures are always stored and updated on the KILT blockchain (via delegation transactions).</strong> Since the delegation chains are stored on-chain, they are always available to the Validator Nodes. In other words, <strong>the Validator Nodes write an attestation backed by delegation to the chain only if the delegation chain is valid at the time of attestation.</strong> As a result, the Verifier is able to verify that the delegation chain is valid if the attestation is valid.</p><p id="aa3923cb-8bfa-42a4-a2c0-3eb9cefd6759" class="">
+</p><p id="19996b81-0686-4a73-87fa-7dc3d0a17a0e" class="">There might be a situation where an Employee loses the right to attest the specific CTYPE of the Hierarchy (e.g. leaves a company), so this should be reflected in the Authorization path. Upon revocation of Employee 1&#x27;s authorization to certify the University Degree CTYPE by the Department, Employee 1 receives a revocation of the authorization. When Employee 1 tries to issue an attestation for this CTYPE and forge a path of authorization, the Validators will not write the attestation on the blockchain. Furthermore, the Claimer could present a forged off-chain attestation, but the Verifier would not be able to find it when he checked the authorization chain on the KILT blockchain. Previously attested documents remain valid after the revocation as the revocation date is later than the date of the attestation.</p><p id="73e3ada7-eb9d-465a-919b-a2a91e1e512c" class="">
+</p><h1 id="6083e767-6de5-45b2-9169-3675f9f4bf96" class=""><strong>dApps</strong></h1><p id="416f5d06-b523-438d-8221-51ea23e96e9c" class="">
+</p><ul id="71f19595-25c1-4cd2-b12c-43d5327f3972" class="bulleted-list"><li style="list-style-type:disc"><strong>Sporran </strong>- a wallet for KILT Coins and credentials</li></ul><ul id="53829a46-c818-4a88-9d0c-a5da8da77c7e" class="bulleted-list"><li style="list-style-type:disc"><strong>Stakeboard</strong> - a staking platform for backing KILT collators with KILT Coins</li></ul><ul id="1de0dbfb-5d45-4f4b-9caa-4c41c5bb51d0" class="bulleted-list"><li style="list-style-type:disc"><strong>SocialKYC</strong> - an identity verification service for social media credentials</li></ul><ul id="8798a35d-ebe0-4ebc-8299-3888eb7ad5c8" class="bulleted-list"><li style="list-style-type:disc"><strong>DIDsign</strong> - a decentralized way to sign any digital file directly in your browser</li></ul><ul id="f1cd974b-c1cf-402d-ab0b-7500136cf744" class="bulleted-list"><li style="list-style-type:disc"><strong>web3name</strong> - linked with addresses and credentials, your digital identity is a unique name that can be used across ecosystems.</li></ul><h1 id="b47d45c9-ccc3-4a01-b426-9e55a93f6ef2" class="">web3name</h1><p id="69cd200a-117a-421e-bd7b-2fde6ca68959" class="">
+There is a one-to-one relationship between DIDs and web3names. This means that a KILT DID can be linked to only one web3name, and a web3name can be claimed only by one DID.</p><p id="e1a3228d-5b64-4288-866e-106aab97ea31" class="">
+</p><p id="3f349733-5583-470d-9a12-af6db3c18e0e" class="">With web3name, you can now replace a DID string like this:<div class="indented"><p id="edc6c815-5411-4c01-9f81-105805217167" class=""><em>did:kilt:4s8kEBWV9nwU5znxmfR7DVA31DdBoqYGr49SAiAPzzigwJDm</em></p></div></p><p id="43e523ea-b285-4f4b-9bf4-950b50b5791a" class="">with this:<div class="indented"><p id="d74ac8b4-ccae-416f-b2a3-18f4ec03fe10" class=""><em>w3n:ingo</em></p></div></p><h1 id="3c5cbb3f-b81c-4358-bfec-2167dfbd1911" class="">Sporran</h1><p id="25a5060d-ae78-45a5-8da2-d5f96b779782" class="">Sporran is the KILT wallet. </p><p id="f50c64f8-5699-4fac-a9e4-68575d10dddc" class="">As opposed to crypto wallets, it can also create DIDs and store them on the KILT blockchain. Credentials can be requested, stored, maintained, signed, and shared.</p><p id="90f36975-7525-4710-a897-5452b34ec982" class="">Creating DIDs with the Sporran</p><ul id="4238291e-e31c-4562-a16c-02bb938b3c91" class="bulleted-list"><li style="list-style-type:disc">User installs Sporran extensions and creates a KILT account</li></ul><ul id="7b8ef2ee-b5f6-495f-8543-5588e63b52a6" class="bulleted-list"><li style="list-style-type:disc"> A local DID can be used for cryptographic challenges</li></ul><ul id="cc591c31-45d9-4706-8fd7-7b7d32b214a6" class="bulleted-list"><li style="list-style-type:disc">This DID can be anchored on the KILT blockchain, making it accessible from other blockchains.</li></ul><p id="b58847bc-29b1-4b55-800f-551c40409e07" class="">The Sporran is a browser extension for Firefox and Chrome that acts as a wallet for KILT logins and KILT coins. You will then receive your first DID. Digital identities include credentials such as email accounts, Twitter accounts, passports, and certificates.</p><h1 id="a71ed9ff-6895-41b8-9259-62e08ca87cbb" class="">S<strong>ocialKYC</strong> </h1><p id="2e84dcc7-8d2e-4b0e-94d8-9595d6768ba5" class="">An account opening with a bank requires you to prove that you own your government-issued credentials, such as your passport. This process is known as KYC or &quot;Know Your Customer.&quot; SocialKYC verifies a user&#x27;s identity by verifying control of their social media accounts, email addresses, and phone numbers. SocialKYC doesn&#x27;t remember the user or the credential after issuing a credential, unlike Web 2.0 sign-in processes. There is no storage, siloing, or sharing of personal data. Using SocialKYC and Sporran, users can manage and store their personal credentials and control what personal information they share online.
+
+</p><p id="b1ca54e5-cdde-4bb3-8a65-ae2d85817a76" class="">SocialKYC has a completely different approach to sensitive personal data than Web 2.0 systems. Users&#x27; credentials will be forgotten if the system provides them.</p><ul id="1a69c59b-ad49-45cf-bdb2-005406d8c1f9" class="bulleted-list"><li style="list-style-type:disc">It begins with SocialKYC asking users to verify their email addresses and tweet a confirmation message to prove this is their account. Friend).</li></ul><ul id="4e3450e8-edd6-48cc-a191-c367451cc530" class="bulleted-list"><li style="list-style-type:disc">Once the user passes the SocialKYC check, the credential is issued. In their Sporran wallet, users can store credentials. A credential identifies who owns a particular account.</li></ul><ul id="861870b1-b2c3-4dbd-96b1-d83aa4b20719" class="bulleted-list"><li style="list-style-type:disc">SocialKYC does not store or pass on this personal information. Under the user&#x27;s control, it stays in their sporran wallet.</li></ul><ul id="44a6e21b-3b9a-4208-8970-7ec7872966bd" class="bulleted-list"><li style="list-style-type:disc">In order to use the Sporran wallet, users simply need to submit their credentials to any service that accepts them.</li></ul><figure id="a8f8f695-ab88-4233-9561-9b4015880b62" class="image"><a href="KILT%20d0fe8077024f4f52b429e2c2f32be8c5/kilt3.png"><img style="width:1102px" src="KILT%20d0fe8077024f4f52b429e2c2f32be8c5/kilt3.png"/></a><figcaption>Source: <a href="https://www.kilt.io/wp-content/uploads/2021/05/SocialKYC_PolkadotDecoded_19May2021_KILTProtocol.pdf">SocialKYC_PolkadotDecoded_19May2021_KILTProtocol.pdf</a></figcaption></figure><p id="a2c95425-8860-4f15-8da2-ac4ab342ae3e" class="">
+</p><p id="8f6f73ea-8e36-42ec-b288-84ad7f7e028c" class="">
+</p><figure id="9c7e040a-f736-422a-bf5c-bdf2712703ef" class="image"><a href="KILT%20d0fe8077024f4f52b429e2c2f32be8c5/kilt4.png"><img style="width:1095px" src="KILT%20d0fe8077024f4f52b429e2c2f32be8c5/kilt4.png"/></a><figcaption>Source: <a href="https://www.kilt.io/wp-content/uploads/2021/05/SocialKYC_PolkadotDecoded_19May2021_KILTProtocol.pdf">SocialKYC_PolkadotDecoded_19May2021_KILTProtocol.pdf</a></figcaption></figure><p id="b7536244-5446-427a-9b46-d086a4550b15" class="">
+</p><p id="7d84d873-ad69-4980-94ca-81cfd0e8c553" class="">
+<strong>Online services that can be submitted to socialKYC:</strong></p><p id="36be587a-a6e4-4422-a8ed-59b19a3039cd" class="">Email Adress</p><p id="61be351f-27cd-49b4-a27f-5002a43ac325" class="">Phone Number</p><p id="9fde4e1a-8e82-4c9a-b87a-eef42994ce7b" class="">GitHub</p><p id="9c8eb20b-a860-49d9-8900-756ac64fdb80" class="">Twitter</p><p id="752b9cbf-e810-4657-90f2-eb4e612434d7" class="">Discord</p><p id="4483ddb9-e10d-408f-b736-255dc6277c0a" class="">Tiktok</p><p id="79633b39-9d95-43ad-8051-b9b649eb926b" class="">Instagram</p><p id="76340638-84ad-4a8b-a147-ad198a3138c3" class="">Twitch</p><p id="3e5a4550-f01e-4bfc-9f7d-fa16bca13bf0" class="">Telegram</p><p id="4e8a6be9-51da-4224-bca6-2466c80ef600" class="">
+</p><p id="d8271247-c409-4e7a-b0f4-a20ad540361d" class="">Twitter case:</p><ul id="e68a855b-b854-423f-a26a-b15b64ee9ae2" class="bulleted-list"><li style="list-style-type:disc">The server receives the username from the user.</li></ul><ul id="27a30187-b76d-4937-be3f-56e144bc66e1" class="bulleted-list"><li style="list-style-type:disc">Servers prepare Request for Attestation objects for users to sign and send them to them. This object contains the username but is not stored anywhere.</li></ul><ul id="1d38186b-2b77-4efe-b3ba-605bf88ee009" class="bulleted-list"><li style="list-style-type:disc">The server receives the signed Request for Attestation object from the user and temporarily stores it until the user confirms, but no longer than 1 hour after the last activity of the user. There are two fields in the object: the username and the DID. In order to complete SocialKYC, the user must Tweet a predefined text. This text contains a confirmation code, which refers to the user data without containing it. In order to find the confirmation code, the server periodically checks public tweets of the username.</li></ul><ul id="a45bd885-477d-4dd6-be0e-756f30e68259" class="bulleted-list"><li style="list-style-type:disc">The username, stored data, and confirmation code of an inactive user will be deleted after one hour.</li></ul><ul id="9ead04c9-fa22-402e-8cd3-26be8833b1be" class="bulleted-list"><li style="list-style-type:disc">The server stops checking the tweets of this username if the user tweets the predefined text containing the confirmation code. Signing is performed by the server on the stored Request for attestation KILT stores only the signature on the public blockchain, but the signature itself does not contain any personal information, and the signature itself cannot be retrieved. <strong>The server immediately deletes all the information it has about that user.</strong></li></ul><p id="261f5561-3bb6-484b-99ff-88dfa5060ce6" class="">
+</p><h2 id="95e76f98-13c4-4666-ad49-5a10ae9f5f5c" class="">Conclusion</h2><p id="e7e1cde5-acd7-4c36-972f-a9e092330140" class="">Specifically, the feature of linking several Web2 IDs is intriguing, due to the fact that entities that have proven ownership of several &quot;reputable&quot; Web2 IDs should be able to rely on them to give legitimacy to their Web3 identity. Moreover, a tool that allows us to prove ownership is important in our context. A tool such as KILT could be part of such a system.</p><h1 id="52a21cf1-78ad-4827-9836-aea2dbbfcf65" class="">References</h1><p id="0e746126-72cc-4a71-a7bf-7abd2623912c" class=""><a href="https://www.kilt.io/wp-content/uploads/2020/01/KILT-White-Paper-v2020-Jan-15.pdf">KILT-White-Paper-v2020-Jan-15.pdf</a>
+<a href="https://docs.kilt.io/docs/concepts/what-is-kilt">What is KILT? | KILT Protocol</a>
+<a href="https://www.kilt.io/wp-content/uploads/2021/05/SocialKYC_PolkadotDecoded_19May2021_KILTProtocol.pdf">SocialKYC_PolkadotDecoded_19May2021_KILTProtocol.pdf</a>
+<a href="https://medium.com/kilt-protocol/introducing-web3name-your-unique-digital-name-for-web3-the-internet-of-the-future-c301a18f75e8">Introducing web3name, Your Unique Digital Name for Web3, the Internet of the Future | by KILT Protocol | kilt-protocol | Medium</a>
+<a href="https://medium.com/kilt-protocol/kilt-is-now-a-parachain-on-polkadot-56b9206c2114">KILT Is Now a Parachain on Polkadot! | by KILT Protocol | kilt-protocol | Oct, 2022 | Medium</a>
+<a href="https://medium.com/kilt-protocol/announcing-socialkyc-built-on-kilt-65a29a974d07">Announcing SocialKYC, Built on KILT | by KILT Protocol | kilt-protocol | Medium</a>
+<a href="https://socialkyc.io/">SocialKYC</a>
+<a href="https://medium.com/kilt-protocol/kilt-protocol-whats-it-all-about-ab8dd83d422">KILT Protocol: What’s It All About? | by KILT Protocol | kilt-protocol | Medium</a>
+</p><p id="6a96a36f-5e15-4485-bd0b-5d04f5faea5b" class="">
+</p><p id="51a8d08d-3490-47e0-a1c6-a50e432c7570" class="">
+</p></div></article></body></html>

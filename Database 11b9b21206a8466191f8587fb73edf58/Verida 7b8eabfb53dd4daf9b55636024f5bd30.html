@@ -1,0 +1,670 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Verida</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="7b8eabfb-53dd-4daf-9b55-636024f5bd30" class="page sans"><header><h1 class="page-title">Verida</h1><table class="properties"><tbody><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Abstract</th><td>Verida is a network of decentralized identity, data storage, messaging, and single sign-on solutions enabling interoperable ownership of personal data for Web3. User’s verified personal data can be bridged into smart contracts, enabling off-chain data connectivity to multiple blockchains.</td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Year</th><td>2022</td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Link to the paper</th><td><a href="https://docsend.com/view/hqd8d55nbucz83yf">https://docsend.com/view/hqd8d55nbucz83yf</a></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Relevance score</th><td><span class="selected-value select-value-color-yellow">Relevant</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Quality score</th><td><span class="selected-value select-value-color-purple">N/A</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Labels</th><td><span class="selected-value select-value-color-purple">Data to Web3</span><span class="selected-value select-value-color-default">Implementations</span><span class="selected-value select-value-color-orange">Management of credentials</span><span class="selected-value select-value-color-default">Not Sybil resistant</span><span class="selected-value select-value-color-purple">Possible tool in larger solution</span><span class="selected-value select-value-color-gray">Self-sovereign identity</span></td></tr></tbody></table></header><div class="page-body"><h1 id="a2da7f98-15f2-4bfd-b604-e1dbe0309606" class="">Introduction</h1><ul id="3c628234-5b33-4851-afbe-919710164312" class="bulleted-list"><li style="list-style-type:disc">Vision: allowing users to own their data and take advantage of it in a private manner.</li></ul><ul id="a99781a2-5865-4573-8234-d77b258cc01c" class="bulleted-list"><li style="list-style-type:disc">The current Web3 tech stack is not mature enough to compete with centralized solutions.</li></ul><figure id="2c8a2eae-f8fa-4509-9f42-5e85a79fe336" class="image"><a href="Verida%207b8eabfb53dd4daf9b55636024f5bd30/Untitled.png"><img style="width:1098px" src="Verida%207b8eabfb53dd4daf9b55636024f5bd30/Untitled.png"/></a></figure><h3 id="40d005c9-d581-4f18-95db-e6e5963f1913" class="">Identity</h3><ul id="d40ffe98-fa7c-47d0-a749-50dee9c441d8" class="bulleted-list"><li style="list-style-type:disc">The Verida network incorporates a decentralized identity management framework that enables the creation of anonymous identities, that are <em>containers</em> for many different identities.</li></ul><ul id="9a176891-712d-4368-9590-15771ebf7538" class="bulleted-list"><li style="list-style-type:disc">It provides a consent model for sharing these identities, or proof of these identities, with other applications and account holders on the network.</li></ul><h3 id="4133b453-9006-4219-a2be-007f0ec8ded4" class="">Web3 messaging infrastructure.</h3><ul id="456be43b-58f5-4964-9344-0e10e3b10ca6" class="bulleted-list"><li style="list-style-type:disc">Email has provided a critical role in the authentication layer of Web2 applications. Users typically supply an email address to login or reset their password via email.</li></ul><ul id="cbb4e44c-62af-4363-9cc0-16413c82bbd9" class="bulleted-list"><li style="list-style-type:disc">Need for a protocol facilitating consensual access to private data with third parties in a way that works across multiple chains.</li></ul><h3 id="b1db1e70-9cb0-4d45-956b-41d393406e13" class="">Accessing off-chain data on-chain</h3><p id="6481852e-3b8f-4bb3-aca1-b6589f443b2c" class="">Verida offers a bridge that connects signed on-chain data to on-chain smart contracts in a secure, verifiable and privacy-preserving way.</p><h3 id="3bbc59f9-d976-4b5f-ae27-e35083a59508" class="">Decentralized personal data storage</h3><ul id="a251222d-a59e-4157-94ed-4aad962a8135" class="bulleted-list"><li style="list-style-type:disc">Verida’s Storage Node provides “private encrypted databases, user control over where and how their data is stored, real-time synchronization, permissioned data access, and client-side encryption.”</li></ul><ul id="adf9e405-457f-4db3-8870-5fa348209e70" class="bulleted-list"><li style="list-style-type:disc">Identity, authentication, authorization, and encryption are anchored by a user’s private keys. The personal data is encrypted and stored on-chain, with tight authentication and access controls.</li></ul><hr id="670a0475-e129-4633-9a15-097c1eb7cf76"/><h1 id="5f9e24a1-8d67-4ded-a3fc-bead7a98dbd9" class="">Use cases</h1><p id="48b4204e-1f36-4d04-8ba4-41b176d9d0ef" class="">The ones that matter the most to us are:</p><ul id="2a44b8b3-1321-4e02-bd07-60e14000d2e6" class="bulleted-list"><li style="list-style-type:disc">“The Verida API Connector Framework is designed to pull data from the most valuable centralized systems (Facebook, Google, Twitter, Github etc), filter and cleanse for fidelity, normalize the data into common schemas, and store it in the user’s personal data Vault. This serves as a way for users to ‘unlock’ their Web2 data and create personalized data-rich user identity profiles that they directly own and control.”</li></ul><ul id="c36899e4-94fc-4f5d-aef4-7ca06b27e4a3" class="bulleted-list"><li style="list-style-type:disc">Private and re-usable on-chain KYC credentials for compliance</li></ul><ul id="76d18f3d-6c80-4fe8-80bd-6e8294c9e24a" class="bulleted-list"><li style="list-style-type:disc">Rich on-chain identity and reputation profiles</li></ul><hr id="604c0bf6-4304-4705-8e00-f0cad1d0b3ab"/><h1 id="c7975444-4c18-40ba-9348-d8217bc29f3f" class="">Verida protocol</h1><figure id="93c58131-915c-4e90-bc89-0ec38b3895f7" class="image"><a href="Verida%207b8eabfb53dd4daf9b55636024f5bd30/Untitled%201.png"><img style="width:971px" src="Verida%207b8eabfb53dd4daf9b55636024f5bd30/Untitled%201.png"/></a></figure><p id="41a08098-0967-4310-8cac-8cc3bc138a3f" class="">Notes:</p><ul id="91f848b5-2d96-4931-993a-5f80e3f87c10" class="bulleted-list"><li style="list-style-type:disc">Verida provides open-source server nodes that can be operated by anyone on their own infrastructure, to earn tokens on the Verida Network.</li></ul><ul id="ae1c4828-f03c-478c-9969-a2e5fc029e7e" class="bulleted-list"><li style="list-style-type:disc">Every account on the Verida network is a decentralized identity (DID). Users can easily maintain multiple Verida accounts in one Verida Vault for different purposes.</li></ul><ul id="8b584312-1a61-47e3-b9c9-a7b43ab97c9d" class="bulleted-list"><li style="list-style-type:disc">“We’re actively researching the most appropriate blockchain solution for launching the first phase of the network. This blockchain must meet our specific needs around speed, scalability, and transaction costs.” Any update?</li></ul><h3 id="601a8438-68a9-4aa4-8de7-0960f9c6f84d" class="">More on API Connector Framework</h3><p id="c48bdf42-05a2-4ec9-a9e6-9f96b02c0163" class="">This framework provides a library of tools to help developers build API connectors that pull data from centralized systems, normalize the data into common schemas, and store it in the user’s personal data Vault.</p><p id="4efb3ed3-bc1f-4feb-890e-003096a817fe" class="">During the launch phase of the Verida network, developers can register their API connector and earn Verida token rewards from the Community Grants Rewards pool, once their implementation has been verified by the Verida core team.</p><p id="b6494211-d8a2-4c0c-b059-ffd99cebb97f" class="">What has been implemented so far? From an August 24th post:</p><blockquote id="a48b781a-f1aa-4868-a163-219f4a84ecb2" class=""><em>Verida’s Web2 Data Bridges connect signed off-chain data to web3 apps in a verifiable and privacy preserving way. Currently data connectors for Facebook and Twitter have been developed, allowing users to claim their personal data and store it in the Verida Vault. This serves as a way for users to ‘unlock’ their off-chain data and create personalized user identity profiles that they own and control.</em></blockquote><figure id="7d180f14-425b-4213-915e-4f517107c0ac"><div class="source">https://github.com/verida/data-connector-server</div></figure><figure id="f363ddb3-7303-4d45-9889-3086fe493757" class="image"><a href="Verida%207b8eabfb53dd4daf9b55636024f5bd30/Untitled%202.png"><img style="width:890px" src="Verida%207b8eabfb53dd4daf9b55636024f5bd30/Untitled%202.png"/></a></figure><figure id="2e1d6cd3-435b-45db-bcfa-b6e4384d5d80" class="image"><a href="Verida%207b8eabfb53dd4daf9b55636024f5bd30/Untitled%203.png"><img style="width:424px" src="Verida%207b8eabfb53dd4daf9b55636024f5bd30/Untitled%203.png"/></a></figure><figure id="83f17522-6fc0-45a9-9150-14078f636149" class="image"><a href="Verida%207b8eabfb53dd4daf9b55636024f5bd30/Untitled%204.png"><img style="width:907px" src="Verida%207b8eabfb53dd4daf9b55636024f5bd30/Untitled%204.png"/></a></figure><p id="d2b63b57-1ff8-4c8b-a028-10d0b5cad498" class="">It should be noted that there is no prominent mention of oracles, or of verifiably fetching data.</p><h1 id="f4498e3e-ad38-45b1-87fe-83fdfbbfee50" class="">Timeline </h1><p id="ee258e88-54da-4e3f-bb28-1dc7214cad0d" class="">Since raising our seed round, we have completed the following components of our technical roadmap:</p><p id="9d37fc9c-5686-4648-90ec-cfbe5d744f46" class="">H2 2021:</p><ul id="cdec1c1e-b41b-4481-b210-c412fb1d76c5" class="bulleted-list"><li style="list-style-type:disc">a. Protocol - Rebuild core libraries for v1 release</li></ul><ul id="3212a0e2-5220-4bc3-b783-8a4f1a382a49" class="bulleted-list"><li style="list-style-type:disc">b. Testnet - Verida Vault</li></ul><ul id="a407ada0-e49a-4b22-b606-13122fac853b" class="bulleted-list"><li style="list-style-type:disc">c. Testnet - DID registry</li></ul><ul id="314750cd-97ac-4b8f-9f3b-f4ce0d220bbb" class="bulleted-list"><li style="list-style-type:disc">d. Testnet - Database storage node</li></ul><ul id="5a37b0cd-0a0f-497d-9383-2f680fc6eb5f" class="bulleted-list"><li style="list-style-type:disc">e. Testnet - Auth server</li></ul><ul id="56e317ad-366a-4ee0-bfce-659524902bb6" class="bulleted-list"><li style="list-style-type:disc">f. Testnet - Notification server</li></ul><ul id="2adeeaf4-6112-4e7c-a035-65561aed2533" class="bulleted-list"><li style="list-style-type:disc">g. Demo - Markdown Editor</li></ul><ul id="8ab34df3-d935-4085-8996-b30f2cbaadfd" class="bulleted-list"><li style="list-style-type:disc">h. Demo - Verifiable Credential Issuance</li></ul><ul id="56417981-82f2-4a23-91ea-0d82fc73bb05" class="bulleted-list"><li style="list-style-type:disc">i. Demo - Data consent model</li></ul><p id="e5c1e7cd-f625-4160-ba70-33f98cf41b4b" class="">Roadmap for 2022:</p><ul id="c7971fd0-b7e8-47a5-9f96-ebe5b5a0b830" class="bulleted-list"><li style="list-style-type:disc">a. Mainnet - Verida Vault</li></ul><ul id="b3111a5b-979d-4e72-821a-bf982843aab8" class="bulleted-list"><li style="list-style-type:disc">b. Mainnet - DID registry</li></ul><ul id="100c34ae-0bb1-4318-8054-399811d52c44" class="bulleted-list"><li style="list-style-type:disc">c. Mainnet - Database storage node</li></ul><ul id="84b7343c-d08d-4771-b55f-c29bb2767751" class="bulleted-list"><li style="list-style-type:disc">d. Mainnet - Auth server</li></ul><ul id="14c690bd-5983-42e2-a031-6b84478df183" class="bulleted-list"><li style="list-style-type:disc">e. Testnet &amp; Mainnet - VDA Token Launch</li></ul><ul id="ba428db9-74d6-4861-818f-365aa4d8db80" class="bulleted-list"><li style="list-style-type:disc">f. Testnet &amp; Mainnet - VDA Token bridge</li></ul><ul id="1797a850-93b6-4b5b-bc39-13499d9c171e" class="bulleted-list"><li style="list-style-type:disc">g. Testnet &amp; Mainnet - Messaging node</li></ul><ul id="73244412-2bcb-4fc9-9a5d-f06cbe82500f" class="bulleted-list"><li style="list-style-type:disc">h. Testnet &amp; Mainnet - Interactions registry</li></ul><ul id="474d8df1-01d3-4b49-8f8d-a0ea94309943" class="bulleted-list"><li style="list-style-type:disc">i. Testnet - Rewards</li></ul><ul id="eb0e918e-c279-4250-83e7-ffabe5fbdaf7" class="bulleted-list"><li style="list-style-type:disc">j. Protocol - Verifiable Credential library</li></ul><ul id="9a716f45-911a-4711-bfc8-bdc998dd4185" class="bulleted-list"><li style="list-style-type:disc">k. Research +Testnet - Personal Data Oracle</li></ul><ul id="9fd5109b-2323-4c92-8d15-3f9a96a8341e" class="bulleted-list"><li style="list-style-type:disc">l. Research - API connectors framework</li></ul><p id="3dd989ac-b6ba-4fd3-bd6e-0cef332c129f" class="">2. H2 2022</p><ul id="7b122626-66cc-4dab-9949-1353956968ce" class="bulleted-list"><li style="list-style-type:disc">a. Mainnet - Rewards</li></ul><ul id="6c77c4fb-941f-4c22-a39b-1d154efc9153" class="bulleted-list"><li style="list-style-type:disc">b. Mainnet - Personal Data Oracle</li></ul><ul id="f4af8be6-2d81-4342-88a1-20c1ca248986" class="bulleted-list"><li style="list-style-type:disc">c. Launch - API connectors framework</li></ul><ul id="3fb07e06-3fd1-4f4d-8bcd-9f5d7e554f55" class="bulleted-list"><li style="list-style-type:disc">d. Testnet - Trust framework</li></ul><ul id="717f00a4-0908-43f6-ac25-d41a1797a2bb" class="bulleted-list"><li style="list-style-type:disc">e. Testnet - Third party payments</li></ul><ul id="e363600b-acb6-4d26-ac3d-8d218ef9b8b6" class="bulleted-list"><li style="list-style-type:disc">f. Testnet - Community staking</li></ul><p id="3088038e-68d4-4c5c-997b-8c2139483ac2" class="">Note:</p><blockquote id="4d7aee20-37fb-42b9-a87b-9bad40554cfe" class=""><em>We could wait until all the pieces are ready or we can start building today, using a hybrid of centralized and decentralized, with a clear plan towards decentralization in the future. Verida takes the latter approach as a pragmatic way to push the technology forward as quickly as possible, while learning from real-world use cases. This also allows us to move through iterations much faster, developing centralized APIs that are then decentralized once their technical requirements become stable.</em></blockquote><hr id="94d4fbbc-3f7b-4a53-a17d-c705b7a197d9"/><h1 id="787f4e51-d46c-4ead-96b9-ee6eb1f4dbfb" class="">Verida Network</h1><p id="3a28539e-9d7d-4c9b-836e-e15a9bcbeb8c" class="">The network will allow service providers to run nodes that provide the aforementioned services.</p><p id="7834a67b-4d9b-48b5-bf39-47436919fc3b" class="">Value is captured in the Verida Network through data sharing, messaging, data validation processes, and new market creation. There are many new markets already being explored by Verida partners that include; Hyper-personalized insurance oers with decentralized claim management, Patient owned healthcare data with data marketplaces for researchers.</p><figure id="e75a7870-3c6c-4b24-841d-525d8eb19239" class="image"><a href="Verida%207b8eabfb53dd4daf9b55636024f5bd30/Untitled%205.png"><img style="width:706px" src="Verida%207b8eabfb53dd4daf9b55636024f5bd30/Untitled%205.png"/></a></figure><p id="6bee984d-650e-487d-bde4-19b712b59a69" class="">Verida aims to grow its network through a two-pronged approach; with partnerships for enterprise solutions and partnerships with Web3 native ecosystems.</p><h3 id="78ed01f3-6292-4c30-864d-244962b6280f" class="">Network functions</h3><ul id="25abaf69-17e9-4bc3-9de5-dd42c33d4301" class="bulleted-list"><li style="list-style-type:disc">DID registry</li></ul><ul id="81e288a1-14aa-4b61-9c4e-7688eaef0951" class="bulleted-list"><li style="list-style-type:disc">Network interactions (e.g. messages). It’s initially proposed a Network Interaction will be equivalent to $US 0.05.</li></ul><ul id="c7ebf980-b016-4f63-8b62-fb87fe52b60e" class="bulleted-list"><li style="list-style-type:disc">Trust framework:<ul id="80cb56cd-3397-4678-80a7-45d201d4542f" class="bulleted-list"><li style="list-style-type:circle">The Trust Framework brings enhanced trust to all off-chain and on-chain interactions facilitated by the Verida Network.</li></ul><ul id="9abeb00c-1bb9-41e9-aa27-bb2baccaebd1" class="bulleted-list"><li style="list-style-type:circle">Entities can participate in the Trust Framework by providing proofs linking their entity details, social profiles, website, verified KYC, or public blockchain key(s) so they can have trusted interactions with other users of the network.</li></ul><ul id="64e87d29-8f7a-4128-ae4f-d9434ba38ff5" class="bulleted-list"><li style="list-style-type:circle">Status: Currently under R&amp;D.</li></ul></li></ul><ul id="adc8411b-e048-4d9e-82bd-c0394cf2e27e" class="bulleted-list"><li style="list-style-type:disc">Verifiable credentials (live on testnet)</li></ul><h3 id="cf14bb18-43c6-45ee-8cd6-db9d807c25b6" class="">Economic model:</h3><figure id="b5154fa3-53cd-4f7f-a2cf-bf8565420537" class="image"><a href="Verida%207b8eabfb53dd4daf9b55636024f5bd30/Untitled%206.png"><img style="width:713px" src="Verida%207b8eabfb53dd4daf9b55636024f5bd30/Untitled%206.png"/></a></figure><ul id="bb3e3012-5e38-4995-9708-6e77698a527a" class="bulleted-list"><li style="list-style-type:disc">Infrastructure providers must bond VDA tokens when providing services to the Verida network (such as Storage Nodes) to become discoverable across the network. These bonded tokens are held in the network and can be slashed if the infrastructure provider doesn’t meet agreed-upon infrastructure metrics.</li></ul><ul id="f7fe3d04-7c76-4bf7-b403-bb0da6380e8f" class="bulleted-list"><li style="list-style-type:disc">Community Stakers deposit tokens in the Interactions Registry to secure the network.</li></ul><ul id="7de246e4-f3e3-41df-8619-ca2be9ad81a1" class="bulleted-list"><li style="list-style-type:disc">Verida will be governed by the Verida Foundation, with Verida Labs supporting the development of the protocol as early contributors. The core team are early custodians of the protocol and plans to transition to a decentralized governance model as the protocol and community mature.</li></ul><p id="c3fd76c5-62b7-4753-9ce3-9d12c4af84de" class="">Observe that the VDA token is not live yet.</p><hr id="f8f68ee8-8fb4-47b1-a1fe-47da3f4c312f"/><h1 id="e44c62ae-db4b-4591-b5b9-21a4334eaa99" class="">What else is live?</h1><blockquote id="4597641f-565d-4bc1-8a87-532439026c85" class=""><em>Significant engineering effort has gone towards our </em><em><a href="https://github.com/verida/blockchain-contracts/tree/develop/VDA-DID-Registry">Decentralized DID Registry</a></em><em>, which will be launched shortly on Testnet. This is a fork of </em><em><a href="https://github.com/uport-project/ethr-did-registry">ethr-did-registry</a></em><em> with extensions that support “per application” based service endpoints, a built-in “proof” mechanism that unlocks the ability to create a generic “data bridge” to prove verified off-chain data on any Verida-supported blockchain.</em></blockquote><p id="1dd0a471-ccf6-4a41-a465-10c648486d28" class="">
+</p></div></article></body></html>

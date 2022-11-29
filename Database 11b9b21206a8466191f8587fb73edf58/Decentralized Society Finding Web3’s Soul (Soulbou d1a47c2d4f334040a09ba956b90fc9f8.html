@@ -1,0 +1,673 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Decentralized Society: Finding Web3’s Soul (Soulbound tokens)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="d1a47c2d-4f33-4040-a09b-a956b90fc9f8" class="page sans"><header><h1 class="page-title">Decentralized Society: Finding Web3’s Soul (Soulbound tokens)</h1><table class="properties"><tbody><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Abstract</th><td>Web3 today centers around expressing transferable, financialized assets, rather than encoding social relationships of trust. Yet many core economic activities—such as uncollateralized lending and building personal brands—are built on persistent, non-transferable relationships. In this paper, we illustrate how non-transferable “soulbound” tokens (SBTs) representing the commitments, credentials, and affiliations of “Souls” can encode the trust networks of the real economy to establish provenance and reputation. More importantly, SBTs enable other applications of increasing ambition, such as community wallet recovery, sybil-resistant governance, mechanisms for decentralization, and novel markets with decomposable, shared rights. We call this richer, pluralistic ecosystem “Decentralized Society” (DeSoc)—a co-determined sociality, where Souls and communities come together bottom-up, as emergent properties of each other to co-create plural network goods and intelligences, at a range of scales. Key to this sociality is decomposable property rights and enhanced governance mechanisms—such as quadratic funding discounted by correlation scores—that reward trust and cooperation while protecting networks from capture, extraction, and domination. With such augmented sociality, web3 can eschew today’s hyper-financialization in favor of a more transformative, pluralist future of increasing returns across social distance.</td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Year</th><td>2022</td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Link to the paper</th><td><a href="https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID4105763_code1186331.pdf?abstractid=4105763&amp;mirid=1">https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID4105763_code1186331.pdf?abstractid=4105763&amp;mirid=1</a></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Relevance score</th><td><span class="selected-value select-value-color-green">Very relevant</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Quality score</th><td><span class="selected-value select-value-color-blue">5</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Labels</th><td><span class="selected-value select-value-color-pink">Classic reference</span><span class="selected-value select-value-color-red">Collusion prevention</span><span class="selected-value select-value-color-purple">Credential sharing prevention</span><span class="selected-value select-value-color-purple">Data to Web3</span><span class="selected-value select-value-color-yellow">Decentralized identity</span><span class="selected-value select-value-color-red">Good reference source</span><span class="selected-value select-value-color-orange">Management of credentials</span><span class="selected-value select-value-color-brown">Permissionless</span><span class="selected-value select-value-color-gray">Self-sovereign identity</span><span class="selected-value select-value-color-blue">Sybil resistance insights</span><span class="selected-value select-value-color-pink">Verifiable Credentials</span></td></tr></tbody></table></header><div class="page-body"><h2 id="b7c58271-d7cc-4a0b-ba6e-4039f4364973" class="">Soulbound Tokens</h2><ol type="1" id="4ca5d215-f52a-46c5-9644-389b0af9ccf5" class="numbered-list" start="1"><li>Web3 concentrates mainly on the asset transfer, instead of encoding social relationships.</li></ol><ol type="1" id="72cbb56d-b852-4ba5-aef6-eea0c1132fbc" class="numbered-list" start="2"><li>Uncollateralized lending and building personal brands are built on social relationships.</li></ol><ol type="1" id="d594ba51-5063-423a-b4f5-bd1d280bb619" class="numbered-list" start="3"><li>To address this - SoulBound Tokens (SBTs) have been proposed. SBTs would be used to represent social identity and this would solve the issues in web3 around wealth concentration and vulnerability to financial attacks. SBTs would also lead to numerous applications which would pave the way to what would be called a &quot;Decentralised Society&quot;.</li></ol><h2 id="29ff606c-94fd-4e6e-b0f6-b92d3e2b37bc" class="">Souls</h2><p id="3c1e4572-a3cc-4683-af09-e74956723a41" class="">Souls are wallets or accounts that hold publicly visible, non-transferable tokens. The tokens held by Souls are known as SoulBound Tokens (SBTs). Note that they have talked about Souls being publicly visible (unlike the case of DIDs).</p><p id="eb9ebcaf-23cc-4c65-86a5-94ec01e3448f" class="">
+</p><p id="a6b99760-939a-4eb4-a641-26b476e65066" class="">Tokens - (i) can be self attested by the soul itself; (ii) can be attested by other souls which makes the SBTs more credible. (A university can be a soul that issues tokens to graduates. This is like the issuers and holders as in the case of VCs).</p><h2 id="53093031-945f-4bae-bdab-de1b4c2443e8" class="">Stairway to DeSoc</h2><h3 id="ff1fb46c-7d53-42a4-9308-bfcd988f784f" class="">Arts and Souls</h3><p id="29d9df58-eed3-4afb-82d5-b3c9a42bd094" class="">Souls are the natural way for artists to stake their reputations on their works. When trading a tradeable NFT, an artist would be able to issue the NFT from their Soul. The more SBTs the artist’s Soul carries, the easier it becomes for the buyers to know that the Soul belongs to the artist and, thus, confirm that the NFT is legitimate. To improve this, an artist can create a linker SBT that would associate all the NFTs issued by the artist.</p><p id="f8505a5b-dc8a-495f-a190-7a201356459a" class="">With the progress in the deep fake technology, it would keep getting more difficult systems for evaluating legitimacy of various entities. While blockchain keeps track of time when a token was made, SBTs would enable tracking of the social provenance. Thus, SBTs provide us a social picture of a soul. Blockchain together with SBTs would help in preventing “Deep Fakes” as we would know when actually the token originated and we would also know the social context of the token issuer. </p><h3 id="4bcf68c3-eb1d-4310-b27c-e30da33140a2" class="">Soul Lending</h3><p id="cefc0f87-dc3d-4808-9428-283fc3140000" class="">web3 cannot replicate uncollateralized lending because all assets are transferable and saleable. Traditional financial systems support many forms of uncollateralized lending but they depend upon centralized credit scores to evaluate the creditworthiness of borrowers. </p><p id="5424f23a-6817-4a67-8d6c-5df4a72af2db" class="">An ecosystem of SBTs could unlock a censorship-resistant, bottom-up alternative to top-down
+commercial and “social” credit systems. For example, SBTs representing the education history, work history, and rental contracts could serve as a persistent record of credit-relevant history. Loans and credit lines can be represented a s non-transferable but revocable SBTs which can be burnt once they have been repaid. SBTs can provide many other security properties: (i) non-transferability - prevents transferring or hiding loans; (ii) a rich ecosystem of SBTs would prevent borrowers from escaping their loans because bringing up a new Soul would hamper their reputation.</p><p id="37910958-bc99-4454-8408-fdf63176fc77" class="">SBTs can bring about open-sourcing of the lending markets. SBTs would enable lending within social connections. SBTs would offer a substrate for lending practices where members of a social network to support one another’s liabilities. The idea is that a Soul’s constellation would have multiple connections and this would enable a Soul to find multiple co-participants for lending.</p><p id="01db6989-fa70-4a3e-abd2-3bae9ec9c066" class="">How it would start? - Souls would have SBTs that would contain information, which a Soul is comfortable to share publicly. This information would be limited in scope but this can certainly kickstart lending as this can make the information within SBTs credible.</p><h3 id="7235eb32-2030-4cb5-a365-0937e807b194" class="">Not Losing Your Soul</h3><p id="5d1168bc-e69c-43ce-b18f-736683b867e0" class="">There are some key SBTs which are unique to a user and a Soul would not want to lose them. Therefore, not losing a soul becomes very important in the design of SBTs.</p><ol type="1" id="51cc74e7-7755-4001-ab40-772939a3a82e" class="numbered-list" start="1"><li>Possible ways - multi-signature recovery, mnemonics, social recovery (relies on a person’s relationships)</li></ol><ol type="1" id="56073b37-2a47-4490-bd12-f5d79054e3b9" class="numbered-list" start="2"><li>Social recovery - A user curates a set of “guardians&#x27;&#x27; and gives them the power, by majority, to change the keys of their wallet. However, relationships may get sour, or guardians may pass away. Guardians can be a mix of individuals, institutions or other wallets. Firstly, a user must maintain an optimum number of guardians so that the guardians aren’t entirely discrete and neither should they be small enough to collude. Therefore, the user must make efforts maintain healthy relationships with all of them. </li></ol><ol type="1" id="26f737a5-06d2-4669-88c2-ad7de45c6d86" class="numbered-list" start="3"><li>Solution - Community Recovery - tie Soul recovery to a soul’s involvement in communities instead of curating. The relationships over time will be the factor which would decide the guardians for the souls. However the issue with this mechanism is that the communication between users occurs on two scales - off-chain and on-chain. To build a community of guardians, we need a community that encompasses individuals from both the categories. Like social recovery, it is assumed Soul has access to secure, off-chain communications (such as conversation, meeting in person, or confirming a shared secret) which require greater bandwidth.</li></ol><p id="e58b43a0-cf8c-4ff1-b007-51901bdc5b6c" class="">Community recovery emerges from the idea that individuality emerges from the intersection of communities just as communities emerge from the intersection of individuals. By integrating security in sociality, a Soul can regenerate their keys through community recovery.</p><h3 id="2589cabf-c7d9-405e-ab58-27e91d347866" class="">Souldrops</h3><p id="63a895b6-deb1-4a5e-a52c-3e42d5012d5f" class="">SBTs can portray their individualities and reflect their unique traits as they acquire SBTs from various aspects. Such individuation helps to build reputation and identity aco The idea here is to instead of dropping of SBTs among random nodes in the network, the tokens are “airdropped” to souls that satisfy some conditions in SBTs. This can lead to novel incentive mechanism that lead to community engagements.</p><h3 id="ed760845-a66e-4091-82ca-fd4bdb84a35a" class="">DAO of Souls</h3><p id="0d561da2-d427-439f-add5-5dc270a27bad" class="">Current architecture of DAOs can have instances of sybil attacks. This can eventually lead to 51% attacks. SBTs can help mitigate the chances of sybil attacks in multiple ways:</p><ol type="1" id="a3359ae0-331f-47af-9716-68d84368b0b1" class="numbered-list" start="1"><li>Computing over a Soul’s set of SBTs to differentiate between unique souls and sybils</li></ol><ol type="1" id="ed76d472-392d-468f-a3e8-792cb8aa8b86" class="numbered-list" start="2"><li>Giving more power to those souls which have reputable SBTs</li></ol><ol type="1" id="014f5109-282f-4dd4-9cc5-fbd0eddc7331" class="numbered-list" start="3"><li>Issuing specialized proof-of-personhoods SBTs</li></ol><ol type="1" id="1ac50995-b645-414a-a110-f3ed2e3f0769" class="numbered-list" start="4"><li>Checking for correlations between SBTs held by Souls who support a particular vote, and applying a lower vote weight to voters who are highly correlated</li></ol><p id="51804c28-2081-4ef7-ab34-1f64e603d531" class="">The last idea is novel. The last case can be a Sybil attack or a vote from a group of Souls sharing the same bias or making the same error in the judgement. Therefore, such a vote must be weighted mush less.</p><p id="d9faed1b-66d7-4ae1-abdb-e30aee2adc92" class="">DAOs can use SBTs to prevent forms of strategic behaviors such as vampire attacks. DAOs can also use SBTs to make leadership and governance programmatively responsive to their communities.</p><h3 id="d3ce23e3-6b3c-41b7-9a93-cf4635122a6b" class="">Measuring Decentralization through Pluralism</h3><p id="2bf0ccd5-a751-4beb-a97f-5fc1347897e5" class="">It is important to evaluate how decentralized an ecosystem is. Two popular decentralization metrics are:</p><ul id="83033aea-f4e0-435c-9a6d-50f39a90ede2" class="bulleted-list"><li style="list-style-type:disc">Nakamoto coefficient: This measures how many distinct entities need to be combined to gather 51% of some resource</li></ul><ul id="5fff1486-2969-422d-b2b6-28cc47e7600b" class="bulleted-list"><li style="list-style-type:disc">Herfindahl-Hirschman index: This is for measuring market concentration of antitrust purposes and it is calculated by summing the squares of the market shares of the market participants.</li></ul><p id="069c6c44-b3b7-496a-862b-5b1c1eed88d1" class="">However, there are open key questions with these two parameters: what are the correct resources to measure, how to deal with partial coordination and the question about what constitutes a “distinct entity”.</p><p id="54d52769-6bbc-4876-8ef0-9ac86aa5a980" class="">The methods proposed for measuring decentralization/pluralism in a DAO, protocol, or network are:</p><ol type="1" id="effd044d-ef22-476c-9360-3208031629f0" class="numbered-list" start="1"><li>Protocol can limit token voting to reasonably sybil-resistant (SBT rich) Souls.</li></ol><ol type="1" id="217cca8d-bb04-4748-b25e-fe9e7d32809a" class="numbered-list" start="2"><li>Protocol can evaluate the correlations between SBTs held by different Souls and discount votes if they share a large number of SBTs.</li></ol><ol type="1" id="83cb8f5c-379c-4ce2-b9ac-37e00839f302" class="numbered-list" start="3"><li>Protocol can measure the correlations between SBTs held by Souls among and across different layers of network stack.</li></ol><p id="ddc2dbda-f4e9-45ed-b38e-d29115321413" class="">This would enable the measurement of the decentralization of an interoperating and layered ecosystem. However, the formulas and models need to be exacted. This would also require a concrete definition of relationships of SBTs.</p><h3 id="03814ae1-fb48-4cb3-a47b-63b1d32f570c" class="">Plural Property</h3><p id="9be2f458-ff80-416c-8e4a-30dafe176098" class="">Till now, web3 has mainly consisted of entities which are wholly transferable: tokens, NFTs, artworks, etc. Due to this reason, web3 has failed to represent the simplest and ubiquitous property contracts. Therefore, SBTs will help to attain the flexibility to bring up various property rights in the forthcoming systems. Few examples are:</p><ul id="29d39d0d-c378-44b3-b230-cf58c41682c6" class="bulleted-list"><li style="list-style-type:disc"><strong>Permissioning access</strong> to privately or publicly controlled resources. Note that using transferable NFTs is not same as this.</li></ul><ul id="e63c52b6-d574-4db6-9930-8cecbd869184" class="bulleted-list"><li style="list-style-type:disc"><strong>Data Cooperatives</strong> where different access rights is given to different sections of society.</li></ul><ul id="38101332-6331-4b05-8463-647c25fc4ede" class="bulleted-list"><li style="list-style-type:disc"><strong>Experiments with local currencies</strong> with rules that make them more valuable to hold and spend those tokens by Souls who live in a particular area.</li></ul><ul id="0f3eaab6-d085-4354-8f36-0fd4e9311524" class="bulleted-list"><li style="list-style-type:disc"><strong>Experiments in participation</strong> where SBTs create a platform for less contextualized Souls (such as immigrants, adolescents) to gain influence within novel and broader networks.</li></ul><h3 id="33f8bd51-c488-4d4e-bfa3-639d628679c0" class="">From Private and Public Goods to Plural Network Goods</h3><p id="fe77ba35-3fa7-49c9-89dd-7007243d3b3c" class="">SBTs would enable management of assets that are between being fully private and fully public. The current infrastructure either assumes selfish agents without pre-existing cooperation, at best and intentional collusion, at worst, by groups who are already cooperating. In such a scenario, funding models such as Quadratic Funding can’t scale.</p><p id="a407c5d5-9cc6-400f-a7f9-11526826b544" class="">For this scenario, SBTs would encourage cooperation across different communities so as to support diversity. This in turn would depict a broader interest across networks and this would be done by evaluated using shared SBTs. This would also bring up discounting the pre-existng cooperation and quadratically scale up plural goods that confer benefits widely across emergent networks - agreed upon by the most diverse members.</p><h2 id="0761b7c9-4af5-4feb-bce5-ce621997d90b" class="">Plural Sensemaking</h2><p id="043d4b93-eeeb-4adc-9748-4777cf42ed88" class="">AI - working with data feeds and synthesizing them into predictions through proprietary large-scale, non-linear models.
+Prediction - people bet on outcome in the hopes of financial gains relying entirely on financial gains</p><p id="3be2a747-a40e-4ec2-af1a-91f2e45a63ef" class="">SBT’s paradigm - get the best out of both the models - combine non-linear AI models with the market incentives of prediction markets to convert the data laborers to active data creator.</p><h3 id="61fa3126-0aae-4120-aac1-1c7286a526fa" class="">Prediction Markets to Prediction Plurality</h3><ol type="1" id="c5720469-ffcb-4c68-921a-c7caf740c2df" class="numbered-list" start="1"><li>Current design - survival of the fittest - gain of one leads to loss of another - this is not desirable</li></ol><ol type="1" id="42c7cdb5-10b1-40c7-ab48-62284c1f602f" class="numbered-list" start="2"><li>Prediction market has been attached to the people who are prone to gambling and where the winner takes all and the rest of them suffer. </li></ol><ol type="1" id="55a746e1-fbde-45aa-bcaa-185ce8b5bbac" class="numbered-list" start="3"><li>Solution - sophisticated team prediction polling where people have incentives to share information. Members can be weighted based on various factors like past performance and peer evaluation, and then the team works collectively to better decisions.</li></ol><h3 id="7f6be141-e745-4cf4-9d3d-051eaf7203e4" class="">Artificial Intelligence to Plural Intelligence</h3><p id="954ec6a9-b081-4321-a87b-9e20496c6146" class="">Large scale non-linear neural network models can also be transformed by SBTs. Such models require large amount of data aggregated by people. Thus, data creators are not incentivized for doing this. SBTs would enable economic incentives for provenance-rich data while providing data creators with residual governance rights over their data. In addition, SBTs can also bring about cooperation among data creators to create better data sources. This would lead to explosively constructed plural intelligences rooted in social provenance and governed by Souls.</p><p id="0941abaa-bf63-45e3-a106-ea3df449dc33" class="">Therefore, the convergence of prediction market and AI paradigms to form a plural sense-making. This would lead to distributed incentives and careful tracking of social context to create a diversity of models.</p><h3 id="42622911-9c21-4d45-a391-864692c67900" class="">Programmable Plural Privacy</h3><p id="27fb7dca-2d43-4659-a440-101015293fbb" class="">Plural intelligence raises the question about data privacy because building powerful models would require pooling of sensitive data. Self-sovereign identity treats data as private property. However, the issue is not actually the data privacy. Rather it is the lack of integrity to context in the sharing of information.</p><p id="7e689888-94ea-4382-a306-f4c5118a0f79" class="">Instead, the authors of SBTs have proposed that privacy should be treated as “a programmable, loosely coupled bundle of rights to permission access, alter or profit from information”. In this design, every SBT would represent a credential or access to a data store.  </p><h2 id="77e9658b-d6d8-4832-898d-fd49ea4a906e" class="">Decentralized Society</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="e678aa46-cfee-4e8c-932f-e3d843b3f606"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">“Decentralized Society (DeSoc)”: a co-determined sociality, where Souls and Communities convene bottom-up, as emergent properties of each other to produce plural network goods across different scales.</div></figure><p id="48dd6040-097f-4558-a7aa-21db7b26467b" class="">Plural network goods have been emphasized as a feature of DeSoc because networks are the main source of economic growth, ye the most susceptible to dystopian capture by private actors and powerful governments. Most significant economic growth is possible when there is increasing network returns. The greatest strength of DeSoc is its network composability - enabling growth of all the societies via cooperation. </p><p id="0c2e443b-b2d8-4167-9337-707f22bbb324" class="">Networks with increasing returns become most efficient when they are neither treated as purely public nor treated as purely private - but rather as partial and plural goods. </p><ol type="1" id="10d2fbb3-12ff-42d6-a26b-4f87aa846f53" class="numbered-list" start="1"><li>web2 - centralized; souls have very less control (authoritarianism)</li></ol><ol type="1" id="9cb3c6ff-c30d-415e-880c-a74c06bb828c" class="numbered-list" start="2"><li>DeFi - although decentralized, can have internal collusion (anarcho-capitalism); if not made sybil-resistant, then DeFi can finally lead to the biggies owning larger shares</li></ol><ol type="1" id="80a98255-1b81-47e0-bb8c-6c0e306bfb32" class="numbered-list" start="3"><li>DeSoc - stochastic social pluralism - a network of individuals and communities that come together, as emergent properties of each other, co-determining their own future</li></ol><h2 id="33e0cdee-a74a-42ea-9744-6995871f2416" class="">Implementation Challenges</h2><p id="b38ef219-6f38-4d4a-87bb-5fe59a84a69b" class="">Privacy is a key challenge - making too much of data public could reveal too much while allowing a large amount of data to be private could lead to collusion. </p><h3 id="90ef8e0b-257e-4a9d-ba0c-a7f3750fa771" class="">Private Souls</h3><ol type="1" id="fb993f9a-9cee-43e0-a8ae-00e190b9dc10" class="numbered-list" start="1"><li>Data on blockchains are public by default. One possible way could be by having multiple pseudonyms - medical soul, school soul, work soul, etc. But, an attacker could quite easily associate them to figure out the individual. Thus, putting all the data on chain with different pseudonyms is not a great solution.</li></ol><ol type="1" id="9456eacb-0bce-44ac-889f-627f2bb3addc" class="numbered-list" start="2"><li>Solution - store SBT (where the SBTs store all the relevant information) off-chain and the hash on-chain. User can choose any off-chain technology: (i) local storage; (ii) cloud service; (iii) decentralized networks such as IPFS.</li></ol><ol type="1" id="3fd7ef34-7bfa-41aa-b83d-4948aab2cac7" class="numbered-list" start="3"><li>Partially reveal data and prove the statements - zk proofs. zk proofs can be computed over SBTs to prove characteristics about a soul.</li></ol><ol type="1" id="ed6d6924-3bcb-4858-ab65-a0189aba9683" class="numbered-list" start="4"><li>zk proofs can be used prove characteristics of a soul. zk proofs can be extended to MPC techniques such as garbled circuits, which could make the technique doubly private.</li></ol><ol type="1" id="91f9a5b0-7b99-4eea-a9fe-cec69aa31e32" class="numbered-list" start="5"><li>Another technique - designated verifier proofs - only the designated entity can verify. This can be enhanced using verifiable delay functions (VDFs).</li></ol><p id="e4875f6b-0907-4f3a-8327-4ed22bf97b02" class="">The idea of off-chain data and zero-knowledge techniques are compatible with negative reputations - SBTs that are made visible even if the user doesn’t want them to be visible. Examples of negative reputation are credit history, data about unpaid loans, negative reviews, and complaints from business partners. Therefore, it should be noted that the information provided by negative reputation is essential to be public. Therefore, smart contracts can be designed in a way that Souls would need to incorporate negative SBTs into data structure.</p><h3 id="7ba59739-d43c-4d08-a17c-ffdf10b3fd02" class="">Cheating Souls</h3><p id="8f5df7b9-84f1-4774-927b-ab59c007f2f1" class="">Souls will try to trick or cheat their way into communities to gain access to governance or property rights. One can argue that the varying incentives to cheat may cancel out. That is a Soul trying to get SBTs to gain control over a particular community will end up possessing less diverse SBTs which in turn would lead to losing influence over other communities. However, it would be naive to assume that the influences may cancel out somehow. Thus, to prevent this “gaming” issue, the authors have proposed the following methods:</p><ol type="1" id="93c86abb-2dc7-44dd-a6bf-5d04d8452664" class="numbered-list" start="1"><li>Bootstrap off thick community channels</li></ol><ol type="1" id="e26f5132-6228-401e-a5ca-e9155b19c43a" class="numbered-list" start="2"><li>Nested communities could require SBTs to force context on potential collusion vectors “just below” them</li></ol><ol type="1" id="1ed51722-bb58-42e6-8143-72ba71711336" class="numbered-list" start="3"><li>Use the openness and cryptographic provability of the SBT ecosystem to actively detect collusive patterns and penalize inauthentic behavior</li></ol><ol type="1" id="7f9b5cf7-422f-42eb-864a-6c55dd011c84" class="numbered-list" start="4"><li>Encourage whistleblowers to make collusion of significant size unstable</li></ol><ol type="1" id="cd7f9819-046d-49db-9c43-127ae88ab2ca" class="numbered-list" start="5"><li>Using ZK technology (such as MACI) to prevent some attestations made by a Soul being provable. This would make attempts to sell certain kinds of attestations non-credible because the briber won’t be able to tell if the bribe recipient actually did the job.</li></ol><ol type="1" id="00c86123-d9df-477e-ac15-e2fa37ec32dd" class="numbered-list" start="6"><li>Use mechanisms from peer-prediction theory to encourage honest reporting in all cases except when the collusion is very large</li></ol><ol type="1" id="96f1f0eb-178c-4524-a259-5834f2338c46" class="numbered-list" start="7"><li>Use correlation scores that would focus on correlations where there is a large incentive to be honest.</li></ol><h2 id="007ea2bd-2dc4-4318-b317-9cfd862ca79d" class="">Comparison</h2><ol type="1" id="9cb9dd91-9a3a-4b6d-8608-b1a595e144a9" class="numbered-list" start="1"><li>Legacy - Rely on pieces of papers. Requires confirmation from 3rd party for verification.</li></ol><ol type="1" id="19d0c3aa-3427-4b62-b2d5-a5c22a8b06a0" class="numbered-list" start="2"><li>Pseudonymous Economy - combining reputation systems with ZKP to preserve privacy. A person splits ZK attestations into multiple wallets to prevent themselves from being identified. Difference - pseudonymous economy greatly emphasizes on privacy protection via identity separation, while SBT does not. Prevention in DeSoc - by contextualizing the attackers. Cancellation occurs when the data travels to the communities that are not closely related to the person. Victim can launch defensive mechanisms and provenance can help the user prove that the SBTs wasn’t generated by them. </li></ol><ol type="1" id="5aa42af4-9b73-4f77-853e-10605f5f340a" class="numbered-list" start="3"><li>Proof of Personhood - Provide tokens for uniqueness. because PoP protocols seek to represent individual identities - PoP protocols are limited to applications that treat all humans the same. </li></ol><ol type="1" id="68979b0d-47e2-44e2-8ee7-642fe0506d56" class="numbered-list" start="4"><li>VCs: VC implementations have struggled with a recovery paradigm that could be addressed with community recovery. In addition, the way VC has been built, it supports unilateral privacy. These features are very incorporated in SBTs. Thus, if VCs and SBTs are combined, then it would pave the way to an efficient solution.</li></ol><h2 id="0f0f1b4f-4934-4dbc-a12f-1face49595d2" class="">Soul Birth</h2><p id="62cca79a-fdb7-4a51-9828-d4a65c7eee72" class="">The Souls can be brought to existence in one of the following ways:</p><ol type="1" id="224d4b5d-d8ba-44e8-89b9-4759c3c83593" class="numbered-list" start="1"><li>Proto SBTs: SBTs may also have the property of revocability which can prove to be very useful in bootstrapping. A token is revocable if an issuer can burn the token and re-issue it to a new wallet. Revocable, transferable tokens are a kind of proto-SBT - which would enable community recovery and allow users to collect revocable SBTs. These revocable SBTs would then be burnt and then, transferred to wallets to form non-transferrable SBT.</li></ol><ol type="1" id="8917eb7d-530e-4635-89a3-c4a45aa6c646" class="numbered-list" start="2"><li>Community Recovery Wallets: Custodial wallets do the job for not-so-technical users. Once community recovery is introduced into the market, the custodial wallets could decentralize into community recovery and the custodians move on to provide other services in DeSoc. For more technical web3 users, decentralized non-custodial wallets can prove to be the starting point for community recovery mechanisms.</li></ol><ol type="1" id="ed3d646c-31c9-4ce1-ab33-cd115b6c7600" class="numbered-list" start="3"><li>Proto-Souls: Norms can also bring Souls into existence. A norm can be introduced of not transferring NFTs and POAPs issued by reputable institutions.</li></ol><h2 id="e9769d9a-c4f1-4d2e-9b36-8d28136ac8af" class="">Conclusion</h2><p id="c725efeb-49f5-4437-aa1e-c9e3fd3d3664" class="">The ideas presented in the paper are just the start of DeSoc. There are many open questions which still need to be answered, multiple design choices which still need to be made precise and the implementation which needs to be started.</p><h2 id="a8bd45b0-f2e2-4ca8-b8cc-3aee921d1577" class="">Resources</h2><ol type="1" id="f3ecc100-ec7f-4a9e-8ccb-4f9ccf3e50ad" class="numbered-list" start="1"><li><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4105763">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4105763</a></li></ol><p id="f8a1d6e4-8f74-4d7f-b8b8-eb89a65d79ef" class="">
+</p></div></article></body></html>
